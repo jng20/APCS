@@ -3,11 +3,14 @@ APCS
 HW03 Codify the Revisions/ Revise work with an eye toward clarity and concision.
 2021-09-23
 
-0.
+0. The base represents the number of symbols in the number system. For example, base-2 has two symbols, 0 and 1. 
+In base-10 the rightmost digit, before a decimal point, has the value of x(symbol) * 10^0. The next digit on the left has a value of x * 10^1, and so on.
+
 
 1.Binary means a base two number system. The only symbols are 1 and 0. Binary in general means two things or made of two things. 
 For example, yes or no, black and white, true or false. Binary is helpful in the land of computers because
 there's a lot of logic involved and in logic the only outcomes are true or false.
+It is convenient in computing because each digit can have two states, "on" or "off."
 
 2. BinaryToDecimal Algorithm
 
