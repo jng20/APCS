@@ -1,0 +1,85 @@
+public class Date{
+      public static void main(String[] args){
+          String day, month;
+          int date, year;
+          day = "Monday";
+          month = "August";
+          year = 2021;
+          date  = 30;
+
+          //System.out.print(day);
+          //System.out.print(month);
+          //System.out.print(date);
+          //System.out.print(year);
+          System.out.println("American format:");
+          System.out.println(day + ", " + month + " " + date + ", " + year);
+          System.out.println("European format:");
+          System.out.println(day + " " + date + " " + month + " " + year);
+      }
+}
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Guess{
+      public static void main(String[] args){
+
+          int usernumb, difference;
+          Scanner in = new Scanner(System.in);
+
+          System.out.print("Pick a number between 0 and 100 inclusive:");
+          usernumb = in.nextInt();
+          System.out.println("You picked " + usernumb);
+
+          Random random = new Random();
+          int number = random.nextInt(100) + 1;
+          System.out.println("The number generated is " + number);
+
+          difference = Math.abs(number - usernumb);
+          System.out.println("The difference is "+ difference);
+
+
+      }
+}
+
+
+import java.util.Scanner;
+
+public class Temperature{
+      public static void main(String[] args){
+          double Cels, fahrenheit;
+          Scanner in = new Scanner(System.in);
+
+          System.out.print("Input you temperature in Celsius:");
+          Cels = in.nextDouble();
+          System.out.println("You said: " + Cels);
+
+          fahrenheit = Cels * 9.0 / 5.0 + 32.0;
+          System.out.printf("The temperature in Celsius is %.1f degrees\n", fahrenheit);
+      }
+}
+
+
+public class Time{
+      public static void main(String[] args){
+          int hour, minute, second, passed, remain, total, percentage, hrnow, minnow, secnow, passnow;
+          hour = 15;
+          minute = 48;
+          second = 7;
+          passed = (hour * 3600 + minute * 60 + second);
+          remain = ((24 * 3600) - (hour * 3600 + minute * 60 + second));
+          total = (24 * 3600);
+          percentage =  passed *100 / total;
+          hrnow = 16;
+          minnow = 12;
+          secnow = 18;
+          passnow = (hrnow * 3600 + minnow * 60 + secnow);
+          //System.out.println(hour);
+          //System.out.println(minute);
+          //System.out.println(second);
+          System.out.println("Seconds since midnight: "+ passed);
+          System.out.println("Seconds left until midnight: "+ remain);
+          System.out.println("percentage of day passed: "+  percentage + "%");
+          System.out.println("Seconds since I started: "+ (passnow - passed));
+      } 
+}

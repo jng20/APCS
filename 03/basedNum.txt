@@ -99,4 +99,4 @@ Loop stops because the conditional is false now.
 j= 2 - 2^(2 - 1) = 0
 Sum = 100 + 10^(2 - 1) = 110
 Loop stops because j = 0 which is not greater than 0
-Print sum which is 110
+Print sum which is 110.
