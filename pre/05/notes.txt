@@ -86,4 +86,4 @@ public class Methods{
         //isTriangle(10,1,1);
         System.out.println(ack(1,1));
     }
-}
+} 
