@@ -1,0 +1,22 @@
+Jacob Ng
+APCS
+HW06 -- HelloWorld codes?
+2021-09-28
+
+//Credit to Reng for help with scheme and netlogo
+
+Scheme
+"Hello,World!" 
+//type this in the console looking racket or the top half of Dr.Racket
+
+Netlogo
+"Hello, World!" 
+//Type this in the observer
+
+Python
+print("Hello, World!")
+//this is the code
+
+-All have  " " around hello world
+-Python requires ("   ") and not only "  "
+-couldn't really find any other noticeable things
