@@ -81,5 +81,5 @@ public class Time{
           System.out.println("Seconds left until midnight: "+ remain);
           System.out.println("percentage of day passed: "+  percentage + "%");
           System.out.println("Seconds since I started: "+ (passnow - passed));
-      }
+      } 
 }
