@@ -1,0 +1,102 @@
+Baked Potatoes Jacob Ng, Emily Ortiz, Vansh Saboo
+APCS
+HW03 Codify the Revisions/ Revise work with an eye toward clarity and concision.
+2021-09-23
+
+0. The base represents the number of symbols in the number system. For example, base-2 has two symbols, 0 and 1. 
+In base-10 the rightmost digit, before a decimal point, has the value of x(symbol) * 10^0. The next digit on the left has a value of x * 10^1, and so on.
+
+
+1.Binary means a base two number system. The only symbols are 1 and 0. Binary in general means two things or made of two things. 
+For example, yes or no, black and white, true or false. Binary is helpful in the land of computers because
+there's a lot of logic involved and in logic the only outcomes are true or false.
+It is convenient in computing because each digit can have two states, "on" or "off."
+
+2. BinaryToDecimal Algorithm
+
+Take in an input n (non-negative integer)
+set int j = n; & int sum = 0;
+While j is greater than 0, {
+      set int i = 0;
+      While 10^i <= j{
+          increment i by 1 
+          // Determine the lowest power of 10 that is greater than j. 
+          The power 1 lower than that is the greatest power of 10 that can be subtracted from j (with a non-negative difference)
+      }
+      
+      j -= 10^{i - 1} 
+      // Decrease j by the greatest power of 10, 10^{i - 1}, that can be subtracted from it 
+      sum += 2^{i - 1} // Add 2^{i - 1} to the final sum, since 10^x and 2^x correspond to each other in the different base systems
+} 
+return sum; // Returns the converted decimal number
+
+
+We have two loops. The inner loop finds the greatest power of 10 that can be subtracted from the binary number j. 
+The other subtracts the greatest power of 10 from our binary number j, keeps track of our decimal value (sum), 
+and stops only when our binary number j has been reduced to 0.
+
+Example 101 to decimal
+j=101 sum = 0 
+i=0 --->  10^0 <= 101 ---> i = 0 + 1
+i=1 --->  10^1 <= 101 ---> i = 1 + 1
+i=2 --->  10^2 <= 101 ---> i = 2 + 1
+i=3 --->  10^3 is not <= 101
+Loop stops because the conditional is false now.
+j= 101 - 10^(3 - 1) = 1
+Sum = 0 + 2 ^(3 - 1) = 4
+Repeat because j = 1 which is still greater than 0
+j=1  sum =4
+i=0 ---> 10^0 <= 1 ---> i= 0 + 1
+i=1 ---> 10^1 is not<= 2 
+Loop stops because the conditional is false now.
+j= 1 - 10^(1 - 1) = 0
+Sum = 4 + 10^(1 - 1) = 5
+Loop stops because j = 0 which is not greater than 0
+Print sum which is 5
+
+
+
+3) DecimaltoBinary Algorithm
+
+Take in an input n (non-negative integer)
+set int j = n; & int sum = 0;
+While j is greater than 0, {
+      set int i = 0;
+      While 2^i <= j{ 
+          increment i by 1 
+          // Determines lowest power of 2 that is greater than j. 
+          The power 1 lower than that is the greatest power of 2 that can be subtracted from j (with a non-negative difference)
+      }
+     
+      j -= 2^{i - 1} 
+      // Decrease j by the greatest power of 2, 2^{i - 1}, that can be subtracted from it 
+      sum += 10^{i - 1} 
+      // Add 10^{i - 1} to the final sum, since 10^x and 2^x correspond to each other in the different base systems
+}
+return sum; // Returns the converted binary number
+
+We have two loops. 
+The inner loop finds the greatest power of 2 that can be subtracted from the decimal number j. 
+The other subtracts the greatest power of 2 from our decimal number j, 
+keeps track of our binary value (sum), and stops only when our decimal number j has been reduced to 0.
+
+
+Example 6 to binary
+j=6 sum = 0 
+i=0 --->  2^0 <= 6 ---> i = 0 + 1
+i=1 --->  2^1 <= 6 ---> i = 1 + 1
+i=2 --->  2^2 <= 6 ---> i = 2 + 1
+i=3 --->  2^3 is not <= 6
+Loop stops because the conditional is false now.
+j= 6 - 2^(3 - 1) = 2
+Sum = 0 + 10 ^(3 - 1) = 100
+Repeat because j = 2 which is still greater than 0
+j=2  sum =100
+i=0 ---> 2^0 <= 2 ---> i= 0 + 1
+i=1 ---> 2^1 <= 2 ---> i= 1 + 1
+i=2 ---> 2^2 is not <= 2 
+Loop stops because the conditional is false now.
+j= 2 - 2^(2 - 1) = 0
+Sum = 100 + 10^(2 - 1) = 110
+Loop stops because j = 0 which is not greater than 0
+Print sum which is 110
