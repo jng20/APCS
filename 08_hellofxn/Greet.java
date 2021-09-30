@@ -8,7 +8,8 @@ HW08 -- Refactor Freshi Zero
 /**
 Discoveries
 -when putting in a string for a parameter for a method, you have to put it in quotes. 
-refer to lines 34,35,36.
+refer to lines 35,36,37.
+-2 files can have the same name and different content as long as they're in different directories.
 
 Unresolved questions
 -in the parameter for the method greet, don't we need a name for variable string?
