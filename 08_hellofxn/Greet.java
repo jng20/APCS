@@ -12,7 +12,7 @@ refer to lines 35,36,37.
 -2 files can have the same name and different content as long as they're in different directories.
 
 Unresolved questions
--in the parameter for the method greet, don't we need a name for variable string?
+-in the parameter for the method greet, don't we need a name for parameter String?
 -Were we supposed to use string concatenation?
 **/
 
