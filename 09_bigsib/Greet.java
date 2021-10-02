@@ -1,5 +1,5 @@
 /**
-Baked Potatoes Emily Ortiz Vansh Saboo
+Baked Potatoes Emily Ortiz and Apple Juice, Vansh Saboo and Tiffany,
 Jacob Ng and Preguac
 APCS
 HW09 -- What Are BigSibs Good For?
