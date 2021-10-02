@@ -15,7 +15,7 @@ Unresolved questions
 **/
 
 
-public class Greet{
+public class BigSib{
 
 	public static void greet(String a){
 		String name;
@@ -24,14 +24,3 @@ public class Greet{
 	}
 
 
-
-
-
-
-
-public static void main(String[] args){
-	greet("Bob");
-	greet("Joe");
-	greet("Greg");
-	}
-}
