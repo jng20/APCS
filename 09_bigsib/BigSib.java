@@ -1,7 +1,8 @@
 /**
-Jacob Ng
+Baked Potatoes Emily Ortiz Vansh Saboo
+Jacob Ng and Preguac
 APCS
-HW08 -- Refactor Freshi Zero
+HW09 -- What Are BigSibs Good For?
 2021-09-30
 **/
 
@@ -31,9 +32,9 @@ public class Greet{
 
 
 
-	public static void main(String[] args){
-		greet("Bob");
-		greet("Joe");
-		greet("Greg");
+public static void main(String[] args){
+	greet("Bob");
+	greet("Joe");
+	greet("Greg");
 	}
 }
