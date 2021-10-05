@@ -4,6 +4,7 @@ Jacob Ng and Preguac
 APCS
 HW10 -- Refactor Big Sib One
 2021-10-04
+Big thanks to Kitty, Gabriel, and Stanley at the dojo
 **/
 
 /**
@@ -15,7 +16,7 @@ when greet method still had println and void
 -You have to return a string and not void.
 -you can still concatenate strings when you're returning a string
 Unresolved questions
-- I will talk with my group for this
+- When/why do we need to use this versioin of Greet?
 **/
 
 
