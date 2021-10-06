@@ -1,5 +1,5 @@
 /**
-Jacob Ng and Preguac, Kartic
+Jacob Ng and Preguac, Kartic and Krrish
 APCS
 HW12 -- On Elder Individuality and the Elimination of Radio Fuzz
 2021-10-05
