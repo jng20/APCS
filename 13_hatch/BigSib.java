@@ -24,7 +24,9 @@ QCC
 
 public class BigSib{
 
-	 String SupMsg = "Word up ";
+	public BigSib() {
+		SupMsg = "Word up ";
+	}
 	
 	public String greet(String name){
 	
