@@ -13,6 +13,7 @@ DISCO
 - For each instance of a class, the static variable would remain the same throughout all of them.
 - Static can't reference non static and vice versa
 -stsatic has to do with memory stuff
+-Static notes came from Andrew from the dojo
 QCC
 - When richard.setHelloMsg("Word up"); 
   only freshman appeared aka the input for greet() method
