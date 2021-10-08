@@ -1,45 +1,57 @@
 /**
-Jacob Ng and Preguac, Kartik and Krrish
+Team Richard
+Jacob Ng and Preguac, Kartik and Krrish, Vansh and Tiffany
 APCS
 HW14 -- Customize Your Creation
 2021-10-07
-
+Thanks to the dojo for showing me what a constructor was
 **/
 
 /**
 DISCO
--error: non-static variable SupMsg cannot be referenced from a static context
- The same error we saw in class. Had to remove static from the header to compile.
-- For each instance of a class, the static variable would remain the same throughout all of them.
-- Static can't reference non static and vice versa
--stsatic has to do with memory stuff
--Static notes came from Andrew from the dojo
+-I discovered what a constructor actually was (I had only been making instance variables)
+-I discovered how an overloaded constructor works (a constructor that takes args)
+-I discovered contructors are methods
 QCC
-- When richard.setHelloMsg("Word up"); 
-  only freshman appeared aka the input for greet() method
--String SupMsg;
- SupMsg = "Word up "; would not compile
+-I don't get how to use both a constructor and overloaded constructor together
+-The instance variable should be private
+-I don't think I did this hw right. My team also didn't know.
+-How do we give each Instance their own personal msg without an input? Is it possible without 
+conditionals?
+-Is there a way to get the name of the new Instance made? 
 **/
 
 
 public class BigSib{
 
-	String SupMsg;
-	richard.SupMsg = "word up ";
-	grizz.SupMsg = "Hey ya ";
-	dotCom.SupMsg = "Sup ";
-	tracy.SupMsg = "Salutations ";
-	
+  private String richard, grizz, dotCom, tracy;
+
+
+  public BigSib(){
+    richard = "word up";
+    grizz = "Hey ya";
+    dotCom = "Sup";
+    tracy = "Salutations";
+  }
+
+
+
 	public String greet(String name){
-	
-		return SupMsg + name;
+		if(name == "freshman"){
+        return richard + " " + name;
+    }
+    else if(name == "Dr.Spaceman"){
+        return grizz + " " + name;
+    }
+    else if(name == "Kong Fooey"){
+        return dotCom + " " + name;
+    }
+    else if(name == "mom"){
+        return tracy + " " + name;
+    }
+    else{
+        return "idk";
+    }
 	}
-	
-	
-	
-	//public void setHelloMsg(String msg){
-	//	msg = SupMsg;
-	//}
-}
 
 
