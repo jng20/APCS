@@ -31,13 +31,13 @@ public class Greet{
 		BigSib dotCom = new BigSib();
 		BigSib tracy = new BigSib();
 		greeting = richard.greet("freshman");
-		System.outprintln(greeting);
+		System.out.println(greeting);
 		greeting = tracy.greet("Dr.Spaceman");
-		System.outprintln(greeting);
+		System.out.println(greeting);
 		greeting = grizz.greet("Kong Fooey");
-		System.outprintln(greeting);
+		System.out.println(greeting);
 		greeting = dotCom.greet("mom");
-		System.outprintln(greeting);
+		System.out.println(greeting);
 		
 		}
 		
