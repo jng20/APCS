@@ -41,13 +41,13 @@ public class BigSib{
         return richard + " " + name;
     }
     else if(name == "Dr.Spaceman"){
-        return grizz + " " + name;
+        return tracy + " " + name;
     }
     else if(name == "Kong Fooey"){
-        return dotCom + " " + name;
+        return grizz + " " + name;
     }
     else if(name == "mom"){
-        return tracy + " " + name;
+        return dotCom + " " + name;
     }
     else{
         return "idk";
