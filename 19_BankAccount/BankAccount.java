@@ -52,7 +52,7 @@ public class BankAccount {
 		}
 	}
 
-	public void setBalance( int bal ) {
+	public void setBalance( balance bal ) {
 		balance = bal;
 	}
 
