@@ -4,80 +4,82 @@ Jacob Ng, Gloria Lee
 APCS
 HW24 -- Get It While You Can
 2021-10-25
-time spent: 
+time spent: 1 hr
 */
 
 /*
 DISCO
 -you 2 loops instead of one because the conditional matchCtr < 65536 && matchCtr%2004 != 0 is unreachable
--
+-We have to create new objects inside of the methods and not in the main method or outside of all methods
+because if we don't, we get the error that the symbol cannot be found. This is the same for each counter
+variable.
+- We still spent too long on this hw.
+- We chose not to use this(). It didn't check if the inputted string was a valid input.
 QCC
--
+-We changed headsCtr to numberHeads because we didn't want to get confused with the variable specific to
+the coin object and the other variable inside the methods. Was this necessary?
+- How could we have used this() in our code?
 Post-v0 Mods
--
+
 */
-public class Driver {
+public class Driver{
 
-  public static void main( String[] args ) {
-	int matchCtr;
-	matchCtr = 0;
-	
-	Coin first = new Coin("dollar", "heads");
-	Coin second = new Coin("dollar", "heads");
-	
-	while(matchCtr < 65536){
-		first.flip();
-		second.flip();
-		if ( first.equals(second) ) {
-        		matchCtr++;
-      		}	
-	}
-	while (matchCtr%2004 != 0){
-		first.flip();
-		second.flip();
-		if ( first.equals(second) ) {
-        		matchCtr++;
-      		}
-	}
-	System.out.println(matchCtr);
-	
-	
-    /*top  
-    //build Objects from blueprint specified by class Coin
-
-
-    //test default constructor
-
-      Coin mine = new Coin();
-
-      //test 1st overloaded constructor
-      Coin yours = new Coin( "quarter" );
-
-      //test 2nd overloaded constructor
-      Coin wayne = new Coin( "dollar", "heads" );
-
-      //test toString() methods of each Coin
-      System.out.println("mine: " + mine);
-      System.out.println("yours: " + yours);
-      System.out.println("wayne: " + wayne);
-
-      //test flip() method
-      System.out.println("\nAfter flipping...");
-      yours.flip();
-      wayne.flip();
-      System.out.println("yours: " + yours);
-      System.out.println("wayne: " + wayne);
-
-      //test equals() method
-      if ( yours.equals(wayne) ) {
-        System.out.println( "Matchee matchee!" );
+  public static void firstWhile(int x){
+    Coin c1 = new Coin("penny","heads");
+    Coin c2 = new Coin("penny", "heads");
+    int numberHeads =0;
+    while(numberHeads<x){
+      c1.flip();
+      c2.flip();
+      if (c1.upFace=="heads"&&c2.upFace=="heads"){
+        numberHeads+=2;
       }
-      else {
-        System.out.println( "No match. Firestarter you can not be." );
+      else if(c1.upFace=="heads"||c2.upFace=="heads"){
+        numberHeads+=1;
       }
-      
-      ====================BOTTOM======================*/
+    }
+    System.out.println(numberHeads);
+  }
+  public static void secondWhile(int y){
+    Coin c1 = new Coin("penny","heads");
+    Coin c2 = new Coin("penny", "heads");
+    int matchCtr=0;
+    while(matchCtr<y){
+      c1.flip();
+      c2.flip();
+      if(c1.equals(c2)){
+        matchCtr+=1;
+      }
+    }
+    System.out.println(matchCtr);
+  }
 
-  }//end main()
+  public static void thirdWhile(int a, int b){
+    Coin c1 = new Coin("penny","heads");
+    Coin c2 = new Coin("penny", "heads");
+    int matchCtr=0;
+    while(matchCtr<a){
+      c1.flip();
+      c2.flip();
+      if(c1.equals(c2)){
+        matchCtr+=1;
+      }
+    }
+    while(matchCtr%b!=0){
+      c1.flip();
+      c2.flip();
+      if(c1.equals(c2)){
+        matchCtr+=1;
+      }
+    }
+    System.out.println(matchCtr);
+}
+  public static void main(String[]args){
 
-}//end class
+
+    firstWhile(123);
+    secondWhile(67);
+    thirdWhile(65536,2004);
+
+  }
+}

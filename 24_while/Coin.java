@@ -4,17 +4,23 @@ Jacob Ng, Gloria Lee
 APCS
 HW24 -- Get It While You Can
 2021-10-25
-time spent: 
+time spent: 1 hr
 */
 
 /*
 DISCO
 -you 2 loops instead of one because the conditional matchCtr < 65536 && matchCtr%2004 != 0 is unreachable
--
+-We have to create new objects inside of the methods and not in the main method or outside of all methods
+because if we don't, we get the error that the symbol cannot be found. This is the same for each counter
+variable.
+- We still spent too long on this hw.
+- We chose not to use this(). It didn't check if the inputted string was a valid input.
 QCC
--
+-We changed headsCtr to numberHeads because we didn't want to get confused with the variable specific to
+the coin object and the other variable inside the methods. Was this necessary?
+- How could we have used this() in our code?
 Post-v0 Mods
--
+- added reset. added assignValue. added flip method with bias included. added assignValue at the end of each constructor.
 */
 public class Coin {
 
@@ -157,7 +163,7 @@ public class Coin {
       precond:  s is "heads" or "tails", 0.0 <= d <= 1.0
       postcond: Coin's attribs reset to starting vals
   ***/
-  
+
   public void reset( String s, double d ) {
 	flipCtr = 0;
 	tailsCtr = 0;
@@ -179,17 +185,17 @@ public class Coin {
 
   public String flip() {
       double random = Math.random();
-     
+
       flipCtr += 1;
       if(random < bias){
           upFace = "heads";
           headsCtr += 1;
-          
+
       }
       else{
           upFace = "tails";
           tailsCtr += 1;
-         
+
       }
       return upFace;
   }
