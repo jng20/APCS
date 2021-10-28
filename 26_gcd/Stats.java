@@ -1,17 +1,23 @@
 /*
-Nacho Patcho Returns (Gabriel Thompson and Iggy, Faiza Huda and Truthful Tom, Jacob Ng and PreGuac)
+Nacho Patcho Returns | Gabriel Thompson and Iggy, Faiza Huda and Truthful Tom, Jacob Ng and PreGuac
 APCS
 HW26 -- GCD Three Ways
 2021-10-26
+time spent: 0.7 hrs
 */
 
 /*
 DISCO:
-- must return stuff
+ - In a recursive function, the funtion must return in order to recall itself
+ - Iterative functions loop to repeat a part of the code while a recursive function calls itself again to repeat all of the code
 QCC:
--Exception in thread "main" java.lang.ArithmeticException: / by zero
-
+ - Exception in thread "main" java.lang.ArithmeticException: / by zero
+ - Under what circumstances would one technique be more effecient than the other?
+ - Are there any tasks which are impossible to do via while loops and are only possible with recursion?
 ALGO:
+ - Given two ints a and b, we check if a is greater than b and if so, we reevaluate using a=(a-b) and b=b,
+ - and if b is greater than a, we do the same thing, vise-versa.
+ - If both a and b are equal, we return a.
 */
 
 public class Stats{
