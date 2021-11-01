@@ -2,22 +2,18 @@
 Fish and Guac
 Jacob Ng, Gloria Lee
 APCS
-HW23 -- What Does Equality Look Like?
-2021-10-23
-time spent: 1.5
+HW24 -- Get It While You Can
+2021-10-25
+time spent: 
 */
 
 /*
 DISCO
--You don't need to use .toString() to call the toString() method
--To use Math.random and Math.round you don't need to import a library
--Math.random will produce a double on the interval [0.0, 1.0)
--We discovered what precond and postcond means
--When you put something at the end of an if else statement, it will never run. It is unreachable.
+-you 2 loops instead of one because the conditional matchCtr < 65536 && matchCtr%2004 != 0 is unreachable
+-
 QCC
--How were we supposed to finish in half an hour???
--How much time did sir Gabriel spend on his hw?
--What does equality look like?
+-
+Post-v0 Mods
 -
 */
 public class Coin {
@@ -29,7 +25,7 @@ public class Coin {
   int flipCtr;
   int headsCtr;
   int tailsCtr;
-  double bias;
+  double bias = .5;
 
 
   /***
@@ -38,7 +34,7 @@ public class Coin {
    *  postcond:Sets the objects upFace to heads
    ***/
   public Coin() {
-      upFace = "heads";
+      reset ( "heads", 0.5);
   }
 
 
@@ -61,6 +57,7 @@ public class Coin {
     else{
         System.out.println("not a valid input");
     }
+    assignValue(s);
   }
 
 
@@ -93,6 +90,7 @@ public class Coin {
     else{
         System.out.println("Face can't be set");
     }
+    assignValue(s);
 
   }
 
@@ -159,9 +157,13 @@ public class Coin {
       precond:  s is "heads" or "tails", 0.0 <= d <= 1.0
       postcond: Coin's attribs reset to starting vals
   ***/
-  /*
+  
   public void reset( String s, double d ) {
-
+	flipCtr = 0;
+	tailsCtr = 0;
+	headsCtr = 0;
+	upFace = s;
+	bias = d;
   }
 
 
@@ -176,19 +178,20 @@ public class Coin {
    ***/
 
   public String flip() {
-      bias = Math.random();
-      bias = Math.round(bias);
+      double random = Math.random();
+     
       flipCtr += 1;
-      if(bias == 1.0){
+      if(random < bias){
           upFace = "heads";
           headsCtr += 1;
-          return "heads";
+          
       }
       else{
           upFace = "tails";
           tailsCtr += 1;
-          return "tails";
+         
       }
+      return upFace;
   }
 
 

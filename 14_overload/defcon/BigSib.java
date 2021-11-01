@@ -36,8 +36,8 @@ public class BigSib{
 
 
 
-	public String greet(String name){
-		if(name == "freshman"){
+  public String greet(String name){
+    if(name == "freshman"){
         return richard + " " + name;
     }
     else if(name == "Dr.Spaceman"){

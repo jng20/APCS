@@ -43,4 +43,9 @@ public class Greet{
 		
 }
 
-
+/**
+Word up freshman
+Salutations Dr. Spaceman
+Hey ya Kong Fooey
+Sup mom
+**/

@@ -2,28 +2,47 @@
 Fish and Guac
 Jacob Ng, Gloria Lee
 APCS
-HW23 -- What Does Equality Look Like?
-2021-10-23
-time spent: 1.5
+HW24 -- Get It While You Can
+2021-10-25
+time spent: 
 */
 
 /*
 DISCO
--You don't need to use .toString() to call the toString() method
--To use Math.random and Math.round you don't need to import a library
--Math.random will produce a double on the interval [0.0, 1.0)
--We discovered what precond and postcond means
--When you put something at the end of an if else statement, it will never run. It is unreachable.
+-you 2 loops instead of one because the conditional matchCtr < 65536 && matchCtr%2004 != 0 is unreachable
+-
 QCC
--How were we supposed to finish in half an hour???
--How much time did sir Gabriel spend on his hw?
--What does equality look like?
+-
+Post-v0 Mods
 -
 */
 public class Driver {
 
   public static void main( String[] args ) {
-
+	int matchCtr;
+	matchCtr = 0;
+	
+	Coin first = new Coin("dollar", "heads");
+	Coin second = new Coin("dollar", "heads");
+	
+	while(matchCtr < 65536){
+		first.flip();
+		second.flip();
+		if ( first.equals(second) ) {
+        		matchCtr++;
+      		}	
+	}
+	while (matchCtr%2004 != 0){
+		first.flip();
+		second.flip();
+		if ( first.equals(second) ) {
+        		matchCtr++;
+      		}
+	}
+	System.out.println(matchCtr);
+	
+	
+    /*top  
     //build Objects from blueprint specified by class Coin
 
 
@@ -56,7 +75,7 @@ public class Driver {
       else {
         System.out.println( "No match. Firestarter you can not be." );
       }
-      /*top
+      
       ====================BOTTOM======================*/
 
   }//end main()
