@@ -3,7 +3,7 @@
  * APCS
  * L00 -- Etterbay Odingcay Oughthray Ollaborationcay
  * 2021-11-11
- * time spent on this version:  1 hrs
+ * time spent on this version:  0.5 hrs
  *
  *
  *
@@ -12,12 +12,9 @@
  ***/
 
  /**
- New in v8
- -Scanner.
- Tried to print a phrase all in one line with the scanner but couldn't figure it out.
+ New in v7
+ -added punctuation rules
 
-Comments
--Fleetwood Mac, Chicago, Stevie Wonder, and Hall and Oates are so helpful.
  **/
 
 import java.util.Scanner;
@@ -298,24 +295,28 @@ public class Pig {
 
       }
 
+
+  public static void main( String[] args ) {
+    //System.out.println(beginsWithY("yellow"));
+    for( String word : args )
+    System.out.println( "engToPig \t" + engToPig(word) );
+      //System.out.println( "engToPig \t" + engToPig("Hi") );
+      //System.out.println( "engToPig \t" + engToPig("Hi Im Bob") );
+    //  System.out.println( "engToPig \t" + engToPig("Bananas are fun") );
+    //  System.out.println( "engToPig \t" + engToPig("I am sad") );
+    //  System.out.println( "---------------------" );
+    }
+
 /**
   public static void main( String[] args ) {
 
-    for( String word : args )
-    System.out.println( "engToPig \t" + engToPig(word) );
-
-    }
-**/
-
-  public static void main( String[] args ) {
     //instantiate a Scanner with STDIN as its bytestream
     Scanner sc = new Scanner( System.in );
 
     while( sc.hasNext() ) {
-        String word = sc.next();
-        System.out.println( engToPig(word));
+      System.out.println( engToPig(sc.next()) );
 
     }
-
+**/
   }//end main()
-}//end class pig
+//end class pig

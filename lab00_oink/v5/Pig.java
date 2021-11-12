@@ -3,7 +3,7 @@
  * APCS
  * L00 -- Etterbay Odingcay Oughthray Ollaborationcay
  * 2021-11-11
- * time spent on this version:  1 hrs
+ * time spent on this version: 0.6 hrs
  *
  *
  *
@@ -12,12 +12,12 @@
  ***/
 
  /**
- New in v8
- -Scanner.
- Tried to print a phrase all in one line with the scanner but couldn't figure it out.
+ New in v5
+ -cleaning code
+ -removing all space functions because they aren't necessary
+ -engToPig can do the y rule now
+ -Added isAY() and beginsWithY() methods to check for Ys at the beginning
 
-Comments
--Fleetwood Mac, Chicago, Stevie Wonder, and Hall and Oates are so helpful.
  **/
 
 import java.util.Scanner;
@@ -204,6 +204,7 @@ public class Pig {
 
 
     public static boolean beginsWithUpper( String w ) {
+
 	    return isUpperCase(w.substring(0,1) );
     }
 
@@ -215,107 +216,81 @@ public class Pig {
     public static boolean beginsWithY( String w ) {
       return isAY( w.substring(0,1) );
     }
-//---------------------------------------------------------------------------------------------------------------------------------------
-      public static String regPig( String w ){
+
+      public static String engToPig( String w ) {
+
         String ans = "";
+        if(beginsWithY(w)){
 
-        if ( beginsWithVowel(w) ){
-          ans = w + "way";
-        }
+          if (beginsWithUpper(w)){
 
-        else {
-          int vPos = w.indexOf( firstVowel(w) );
-          ans = w.substring(vPos) + w.substring(0,vPos) + "ay";
-        }
-        return ans;
-      }
-
-      public static String upperPig( String w ){
-        String ans = "";
-
-            w = w.toLowerCase();
-
-            if ( beginsWithVowel(w) ){
-              ans = w.substring(0,1).toUpperCase() + w.substring(1) + "way";
-            }
-            else {
-              int vPos = w.indexOf( firstVowel(w) );
-              ans = w.substring(vPos, vPos + 1).toUpperCase() + w.substring(vPos + 1) + w.substring(0,vPos) + "ay";
-            }
-        return ans;
-      }
-
-      public static String yPig(String w){
-        String ans = "";
-
-        if (beginsWithUpper(w)){
             w = w.toLowerCase();
             String without = w.substring(1);
             int vPos = without.indexOf( firstVowel(without) );
             ans = without.substring(vPos, vPos + 1).toUpperCase() + without.substring(vPos + 1) + w.substring(0,1) + "ay";
-        }else{
+
+          }else{
+
             String without = w.substring(1);
             int vPos = without.indexOf( firstVowel(without) );
             ans = without.substring(vPos) + w.substring(0,1) + "ay";
+
           }
+        }else if(beginsWithUpper(w)){
+
+            w = w.toLowerCase();
+
+            if ( beginsWithVowel(w) ){
+
+              ans = w.substring(0,1).toUpperCase() + w.substring(1) + "way";
+
+            }
+            else {
+
+              int vPos = w.indexOf( firstVowel(w) );
+              ans = w.substring(vPos, vPos + 1).toUpperCase() + w.substring(vPos + 1) + w.substring(0,vPos) + "ay";
+
+            }
+        }else{
+
+            if ( beginsWithVowel(w) ){
+
+              ans = w + "way";
+
+            }
+
+            else {
+
+              int vPos = w.indexOf( firstVowel(w) );
+              ans = w.substring(vPos) + w.substring(0,vPos) + "ay";
+
+            }
+        }
         return ans;
       }
 
-      public static String puncPig(String w){
-        String end = "";
-        String ans = "";
-        String word = w.substring(0, w.length()-1);
-        end += w.substring(w.length() -1, w.length());
 
-        if(beginsWithY(w)){
-              ans = yPig(word) + end;
-            }
-            else if(beginsWithUpper(w)){
-              ans = upperPig(word) + end;
-            }
-            else{
-              ans = regPig(word) + end;
-          }
-        return ans;
-      }
-
-
-      public static String engToPig( String w ) {
-
-        if(isPunc(w.substring(w.length() -1, w.length()))){
-            return puncPig(w);
-        }
-
-        else if(beginsWithY(w)){
-            return yPig(w);
-        }
-        else if(beginsWithUpper(w)){
-            return upperPig(w);
-        }
-        else{
-            return regPig(w);
-        }
-
-      }
+  public static void main( String[] args ) {
+    //System.out.println(beginsWithY("yellow"));
+    for( String word : args )
+    System.out.println( "engToPig \t" + engToPig(word) );
+      //System.out.println( "engToPig \t" + engToPig("Hi") );
+      //System.out.println( "engToPig \t" + engToPig("Hi Im Bob") );
+    //  System.out.println( "engToPig \t" + engToPig("Bananas are fun") );
+    //  System.out.println( "engToPig \t" + engToPig("I am sad") );
+    //  System.out.println( "---------------------" );
+    }
 
 /**
   public static void main( String[] args ) {
 
-    for( String word : args )
-    System.out.println( "engToPig \t" + engToPig(word) );
-
-    }
-**/
-
-  public static void main( String[] args ) {
     //instantiate a Scanner with STDIN as its bytestream
     Scanner sc = new Scanner( System.in );
 
     while( sc.hasNext() ) {
-        String word = sc.next();
-        System.out.println( engToPig(word));
+      System.out.println( engToPig(sc.next()) );
 
     }
-
+**/
   }//end main()
-}//end class pig
+//end class pig
