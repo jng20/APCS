@@ -1,12 +1,21 @@
 /*****************************************************
- * Clyde "Thluffy" Sinclair
- * APCS pd00
- * HW38 -- Shmoney
- * 2021-11-18
+ * Team Turtle Hats
+ * Jacob Ng Kevin Cheng Hamim Seam
+ * APCS 
+ * HW38 -- Spin Class
+ * 2021-11-17
+ * Time spent: 0.5hrs
  *
  * class Slots
  * skeleton
  *****************************************************/
+ 
+ /*
+ Disco
+ 
+ QCC
+ 
+ */
 
 public class Slots {
 
