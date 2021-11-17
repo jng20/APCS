@@ -2,8 +2,8 @@
  *Jacob Ng, Ari Gurovich, Kartik Vanjani
  * APCS
  * L00 -- Etterbay Odingcay Oughthray Ollaborationcay
- * 2021-11-09
- * time spent: hrs
+ * 2021-11-11
+ * time spent on this version:  0.3 hrs
  *
  *
  *
@@ -12,16 +12,18 @@
  ***/
 
  /**
- New in v2
- -modded engToPig() to keep capitals for one word inputs.
+ New in v6
+ -Turned all my conditionals in the engToPig into methods
+
  **/
 
-
+import java.util.Scanner;
 public class Pig {
 
   private static final String VOWELS = "aeiouy";
   private static final String CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   private static final String PUNCS = ".,:;!?";
+  private static final String WHY = "yY";
 
   /**
     boolean hasA(String,String) -- checks for a letter in a String
@@ -86,7 +88,14 @@ public class Pig {
     hasAVowel("zzz") -> false
     **/
   public static boolean hasAVowel( String w ) {
-    return w.indexOf(w) >= 0;
+    {
+    for ( int i = 0 ; i < w.length() ; i++ ) {
+      if (isAVowel(w.charAt(i) + "")) {
+        return true;
+      }
+    }
+    return false;
+  }
   }
 
 
@@ -145,10 +154,8 @@ public class Pig {
       =====================================*/
 
 
-
-    public static boolean isPunc( String symbol ) {
-
-	return PUNCS.indexOf( symbol ) != -1;
+    public static boolean isPunc( String symbol){
+      return hasA(PUNCS, symbol);
     }
 
 
@@ -174,7 +181,14 @@ public class Pig {
 
 
     public static boolean hasPunc( String w ) {
-        return PUNCS.indexOf(w) >= 0;
+      {
+      for ( int i = 0 ; i < w.length() ; i++ ) {
+        if (isPunc(w.charAt(i) + "")) {
+          return true;
+        }
+      }
+      return false;
+      }
     }
 
 
@@ -187,56 +201,99 @@ public class Pig {
 
 
     public static boolean beginsWithUpper( String w ) {
-
 	    return isUpperCase(w.substring(0,1) );
     }
 
-    /**
-      String engToPig(String) -- converts an English word to Pig Latin
-      pre:  w.length() > 0
-      post: engToPig("apple")  --> "appleway"
-      engToPig("strong") --> "ongstray"
-      engToPig("java")   --> "avajay"
-      **/
-    public static String engToPig( String w ) {
 
-      String ans = "";
-
-      if (beginsWithUpper(w)){
-          w = w.toLowerCase();
-          if ( beginsWithVowel(w) ){
-
-            ans = w.substring(0,1).toUpperCase() + w.substring(1) + "way";
-          }
-          else {
-            int vPos = w.indexOf( firstVowel(w) );
-            ans = w.substring(vPos, vPos + 1).toUpperCase() + w.substring(vPos + 1) + w.substring(0,vPos) + "ay";
-          }
-      }else{
-
-          if ( beginsWithVowel(w) ){
-            ans = w + "way";
-          }
-
-          else {
-            int vPos = w.indexOf( firstVowel(w) );
-            ans = w.substring(vPos) + w.substring(0,vPos) + "ay";
-          }
-      }
-      return ans;
+//-----------------------------------------------------------------------------------------------------------------------------------
+    public static boolean isAY( String letter ) {
+      return WHY.indexOf( letter ) != -1;
     }
+    public static boolean beginsWithY( String w ) {
+      return isAY( w.substring(0,1) );
+    }
+//---------------------------------------------------------------------------------------------------------------------------------------
+      public static String regPig( String w ){
+        String ans = "";
+
+        if ( beginsWithVowel(w) ){
+          ans = w + "way";
+        }
+
+        else {
+          int vPos = w.indexOf( firstVowel(w) );
+          ans = w.substring(vPos) + w.substring(0,vPos) + "ay";
+        }
+        return ans;
+      }
+
+      public static String upperPig( String w ){
+        String ans = "";
+
+            w = w.toLowerCase();
+
+            if ( beginsWithVowel(w) ){
+              ans = w.substring(0,1).toUpperCase() + w.substring(1) + "way";
+            }
+            else {
+              int vPos = w.indexOf( firstVowel(w) );
+              ans = w.substring(vPos, vPos + 1).toUpperCase() + w.substring(vPos + 1) + w.substring(0,vPos) + "ay";
+            }
+        return ans;
+      }
+
+      public static String yPig(String w){
+        String ans = "";
+
+        if (beginsWithUpper(w)){
+            w = w.toLowerCase();
+            String without = w.substring(1);
+            int vPos = without.indexOf( firstVowel(without) );
+            ans = without.substring(vPos, vPos + 1).toUpperCase() + without.substring(vPos + 1) + w.substring(0,1) + "ay";
+        }else{
+            String without = w.substring(1);
+            int vPos = without.indexOf( firstVowel(without) );
+            ans = without.substring(vPos) + w.substring(0,1) + "ay";
+          }
+        return ans;
+      }
+
+      public static String engToPig( String w ) {
+
+        if(beginsWithY(w)){
+            return yPig(w);
+        }
+        else if(beginsWithUpper(w)){
+            return upperPig(w);
+        }
+        else{
+            return regPig(w);
+        }
+
+      }
 
 
   public static void main( String[] args ) {
-
-    for( String word : args ) {
-    //  System.out.println( "allVowels \t" + allVowels(word) );
-    //  System.out.println( "firstVowels \t" + firstVowel(word) );
-    //  System.out.println( "countVowels \t" + countVowels(word) );
-      System.out.println( "engToPig \t" + engToPig(word) );
+    //System.out.println(beginsWithY("yellow"));
+    for( String word : args )
+    System.out.println( "engToPig \t" + engToPig(word) );
+      //System.out.println( "engToPig \t" + engToPig("Hi") );
+      //System.out.println( "engToPig \t" + engToPig("Hi Im Bob") );
+    //  System.out.println( "engToPig \t" + engToPig("Bananas are fun") );
+    //  System.out.println( "engToPig \t" + engToPig("I am sad") );
     //  System.out.println( "---------------------" );
     }
 
-  }//end main()
+/**
+  public static void main( String[] args ) {
 
-}//end class Pig
+    //instantiate a Scanner with STDIN as its bytestream
+    Scanner sc = new Scanner( System.in );
+
+    while( sc.hasNext() ) {
+      System.out.println( engToPig(sc.next()) );
+
+    }
+**/
+  }//end main()
+//end class pig

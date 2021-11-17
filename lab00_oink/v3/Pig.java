@@ -3,7 +3,7 @@
  * APCS
  * L00 -- Etterbay Odingcay Oughthray Ollaborationcay
  * 2021-11-09
- * time spent: hrs
+ * time spent: 4 hrs
  *
  *
  *
@@ -12,8 +12,14 @@
  ***/
 
  /**
- New in v2
- -modded engToPig() to keep capitals for one word inputs.
+ New in v3
+ -isSpace() to check for a space
+ -SPACE instance variable
+ -spaceCounter() that counts number of spaces in a phrase
+ -fixed isPunc()
+ -fixed hasAPunc()
+ -pigWord()
+ -New engToPig() that failed to translate multiple words (no punctuation)
  **/
 
 
@@ -22,6 +28,7 @@ public class Pig {
   private static final String VOWELS = "aeiouy";
   private static final String CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   private static final String PUNCS = ".,:;!?";
+  private static final String SPACE = " ";
 
   /**
     boolean hasA(String,String) -- checks for a letter in a String
@@ -86,7 +93,14 @@ public class Pig {
     hasAVowel("zzz") -> false
     **/
   public static boolean hasAVowel( String w ) {
-    return w.indexOf(w) >= 0;
+    {
+    for ( int i = 0 ; i < w.length() ; i++ ) {
+      if (isAVowel(w.charAt(i) + "")) {
+        return true;
+      }
+    }
+    return false;
+  }
   }
 
 
@@ -145,10 +159,8 @@ public class Pig {
       =====================================*/
 
 
-
-    public static boolean isPunc( String symbol ) {
-
-	return PUNCS.indexOf( symbol ) != -1;
+    public static boolean isPunc( String symbol){
+      return hasA(PUNCS, symbol);
     }
 
 
@@ -174,7 +186,14 @@ public class Pig {
 
 
     public static boolean hasPunc( String w ) {
-        return PUNCS.indexOf(w) >= 0;
+      {
+      for ( int i = 0 ; i < w.length() ; i++ ) {
+        if (isPunc(w.charAt(i) + "")) {
+          return true;
+        }
+      }
+      return false;
+      }
     }
 
 
@@ -191,6 +210,42 @@ public class Pig {
 	    return isUpperCase(w.substring(0,1) );
     }
 
+
+
+    /*=====================================
+      boolean isSpace(String) -- tells whether a character is a SPACE
+      pre:  symbol.length() == 1
+      post: isSpace(" ") -> true
+            isSpace("b") -> false
+      =====================================*/
+    public static boolean isSpace( String symbol ) {
+
+	    return hasA(SPACE, symbol);
+    }
+
+    public static boolean hasSpace( String w ) {
+      {
+      for ( int i = 0 ; i < w.length() ; i++ ) {
+        if (isSpace(w.charAt(i) + "")) {
+          return true;
+        }
+      }
+      return false;
+      }
+    }
+
+    public static int spaceCounter( String w ) {
+
+      int counter = 0;
+
+      for( int i = 0; i < w.length(); i++ ) {
+
+        if ( isSpace( w.substring(i,i+1) ) )
+          counter++; //grow the return String
+      }
+      return counter;
+    }
+
     /**
       String engToPig(String) -- converts an English word to Pig Latin
       pre:  w.length() > 0
@@ -199,44 +254,82 @@ public class Pig {
       engToPig("java")   --> "avajay"
       **/
     public static String engToPig( String w ) {
-
+/**
       String ans = "";
 
-      if (beginsWithUpper(w)){
-          w = w.toLowerCase();
-          if ( beginsWithVowel(w) ){
+      if (hasSpace(w)){
+          //code that translates each word of the sentence
+          //How do we separate words in a string.
+      }
+      else{
+          ans = pigWord(w);
+      }
+      return ans;
+**/
+      String ans = "";
+      String currentWord = "";
+      int i, j, wordNum, count;
+      j = 0;
 
-            ans = w.substring(0,1).toUpperCase() + w.substring(1) + "way";
-          }
-          else {
-            int vPos = w.indexOf( firstVowel(w) );
-            ans = w.substring(vPos, vPos + 1).toUpperCase() + w.substring(vPos + 1) + w.substring(0,vPos) + "ay";
-          }
+      if(hasSpace(w)){
+        wordNum = spaceCounter(w) + 1;
+        for(count = 0; count < wordNum; count++){
+            for(i = j; !isSpace(w.substring(i,i+1)) && (i < w.length()); i++){
+              currentWord += w.substring(i,i+1);
+            }
+            ans += pigWord(currentWord);
+            currentWord = "";
+            j = i+1;
+        }
       }else{
-
-          if ( beginsWithVowel(w) ){
-            ans = w + "way";
-          }
-
-          else {
-            int vPos = w.indexOf( firstVowel(w) );
-            ans = w.substring(vPos) + w.substring(0,vPos) + "ay";
-          }
+          ans = pigWord(w);
       }
       return ans;
     }
 
+      public static String pigWord( String w ) {
+
+        String ans = "";
+
+        if (beginsWithUpper(w)){
+            w = w.toLowerCase();
+            if ( beginsWithVowel(w) ){
+
+              ans = w.substring(0,1).toUpperCase() + w.substring(1) + "way";
+            }
+            else {
+              int vPos = w.indexOf( firstVowel(w) );
+              ans = w.substring(vPos, vPos + 1).toUpperCase() + w.substring(vPos + 1) + w.substring(0,vPos) + "ay";
+            }
+        }else{
+
+            if ( beginsWithVowel(w) ){
+              ans = w + "way";
+            }
+
+            else {
+              int vPos = w.indexOf( firstVowel(w) );
+              ans = w.substring(vPos) + w.substring(0,vPos) + "ay";
+            }
+        }
+        return ans;
+      }
+
 
   public static void main( String[] args ) {
 
-    for( String word : args ) {
+    //for( String word : args )
     //  System.out.println( "allVowels \t" + allVowels(word) );
     //  System.out.println( "firstVowels \t" + firstVowel(word) );
     //  System.out.println( "countVowels \t" + countVowels(word) );
-      System.out.println( "engToPig \t" + engToPig(word) );
+      System.out.println( "engToPig \t" + engToPig("Hi") );
+      System.out.println( "engToPig \t" + engToPig("Hi Im Bob") );
+      System.out.println( hasSpace("hi "));
+    //  System.out.println( "engToPig \t" + engToPig("Bananas are fun") );
+    //  System.out.println( "engToPig \t" + engToPig("I am sad") );
     //  System.out.println( "---------------------" );
     }
 
   }//end main()
 
-}//end class Pig
+//}//end class Pig
