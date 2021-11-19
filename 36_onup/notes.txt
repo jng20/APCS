@@ -2,7 +2,7 @@ Jacob Ng and PreGuac
 APCS
 HW36 -- All Quacked Up
 2021-11-18
-time spent:
+time spent: 0.7 hrs
 
 Error types
 Compile-time errors indicate that there is something wrong with the syntax of the program. Example: omitting the semicolon at the end of a statement.
