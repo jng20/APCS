@@ -1,0 +1,67 @@
+Jacob Ng and PreGuac
+APCS
+HW36 -- All Quacked Up
+2021-11-18
+time spent:
+
+Error types
+Compile-time errors indicate that there is something wrong with the syntax of the program. Example: omitting the semicolon at the end of a statement.
+
+Run-time errors are produced if something goes wrong while the program is running. Example: an infinite recursion eventually causes a StackOverflowError.
+
+Logic errors cause the program to do the wrong thing. Example: an expression may not be evaluated in the order you expect.
+
+Compile Time Errors
+-incremental development so it's easier to know where the error is
+-If a bunch of errors are spewed focus on the first one because it may be that the first one is the only real errors
+-compiler will tell you what line it finds the error
+-fix indenting and check for syntax errors like missing symbols or not returning the right type. Also, static non static problems
+-Make sure the version you are editing is the one you are compiling
+-debugging by bisection. Cut code in half and compile each half to see which half has error. Keep repeating
+-Don't trust the compiler solution but it can easily be wrong
+
+Run Time errors
+-print statements will be helpful
+-hanging - infinite loop or recursion
+-entering the loop exiting the loop
+-infinite recursion stack overflow
+For infinite loops
+-add a print statement at the end of the loop that displays the values of the variables in the condition, and the value of the condition.
+-you can see if the variables are reaching the condition or not
+For infinite recursions
+-check for base case
+-add print statement for the parameters and check if the parameters are getting towards the base case
+-add "entering methodname" so you can see how your recursion is flowing
+-displays a trace of each method as it's invoked
+-common error is providing arguments in the wrong order
+Exceptions
+-nullpointer exception - invoking a variable or object that is null
+-ArrayIndexOutOfBoundsException - negative index or index not in range of array
+-StackOverflowError:
+-FileNotFoundException - java didn't find the file
+-ArithmeticException - like dividing by 0
+
+Logic Errors
+-Compiler can't help but the code isn't outputting what you want
+-Is something supposed to happen but not happening?
+-Is something happening that's not supposed to happen?
+-is a section of code producing an unexpected effect?
+-Break program into methods and test each method individually
+-Use more variables to make things clearer. Temporary variables
+-Try println instead of print because sometimes print just stores the output until the next new line
+
+If Stuck
+-walk away from the machine
+-computar causes frustration and rage, superstitious beliefs, and sour grapes
+-Let your mind wander and you may find the bug then
+
+If really Stuck
+-Get another pair of eyes and inform them of everything you did, all the error msgs, what you've tried, and what you've learned
+-Rubber Duck Debugging
+-Talk to your rubber duck
+-Explain problems
+-Find solution
+-Thank Ducky
+
+After finding bug
+-Debrief. What was the bug, how did I find it, how can I prevent it or find it faster in the future.
