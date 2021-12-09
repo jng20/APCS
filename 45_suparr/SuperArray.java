@@ -206,6 +206,9 @@ public class SuperArray implements ListInt
 
       System.out.println(mayfield.size());
 
+      ListInt Bob = new SuperArray();
+      System.out.println(Bob.add(2));
+      System.out.println(Bob);
       /*~~~~~~~~move~me~down~~~~~~~~~~~~~~V~~~~~~~~
 
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~~~~*/
