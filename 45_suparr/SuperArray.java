@@ -4,7 +4,7 @@
   * APCS
   * HW45 -- Array of Titanium
   * 2021-12-07
-  * Time spent: 1hrs
+  * Time spent: 2 hrs
   *****************************************************/
 
 /***************************
@@ -21,9 +21,19 @@
 
 /*
 Disco
-
+-abstract methods can have parameters
+-methods in the class must have same heading and parameters (with exception of parameter name)
+as the methods in the interface in order for the class to override the interface?
 Q/C/C
-
+-java error class is not abstract and does not override abstract method kept popping up
+-The methods that had the most problems were set(), size() and add()
+-We don't know why size() had issues since they had the same headers in both files but eventually
+when we fixed the other methods it went away
+-Problems went away when we put in parameters for the abstract methods in the interface
+-We had to change add to return a bool because add in the interface returned a bool
+-intertrash is good and bad
+-What is the point of an interface?
+-How do we Modify main() in SuperArray to test ListInt’s methods if ListInt's methods are abstract?
 */
 public class SuperArray implements ListInt
 {
@@ -33,28 +43,28 @@ public class SuperArray implements ListInt
 
 
   //default constructor – initializes 10-item array
-  //public SuperArray()
-  //{
-  //  _data = new int[10];
-  //  _size = 0;
-  //}
+  public SuperArray()
+  {
+    _data = new int[10];
+    _size = 0;
+  }
 
 
   //output SuperArray in [a,b,c] format
-  //public String toString()
-  //{
-  //  String foo = "[";
-  // for( int i = 0; i < _size; i++ ) {
-  //    foo += _data[i] + ",";
-  //  }
-  //  if ( foo.length() > 1 )
+  public String toString()
+  {
+    String foo = "[";
+    for( int i = 0; i < _size; i++ ) {
+      foo += _data[i] + ",";
+    }
+    if ( foo.length() > 1 )
       //shave off trailing comma
-  //    foo = foo.substring( 0, foo.length()-1 );
-  //  foo += "]";
-  //  return foo;
- // }
+      foo = foo.substring( 0, foo.length()-1 );
+    foo += "]";
+    return foo;
+  }
 
-/*
+
   //double capacity of SuperArray
   private void expand()
   {
@@ -80,37 +90,34 @@ public class SuperArray implements ListInt
     _data[index] = newVal;
     return temp;
   }
-*/
+
 
   //adds an item after the last item
-  public void add( int newVal )
+  public boolean add( int newVal )
   {
     /* YOUR IMPLEMENTATION HERE */
 
     set(_size, newVal);
     _size++;
+    return true;
   }
 
 
   //inserts an item at index
-  /*
-  public void add( int index, int newVal )
+  public boolean add( int index, int newVal )
   {
     /* YOUR IMPLEMENTATION HERE */
-    /*
-    if(index <= _size){
+    if(index < _size){
       _size = _size + 1;
       for (int i = _size - 1; i>index; i--){
           set(i, _data[i - 1]);
       }
       set(index, newVal);
-    }
-    else if(index == _size + 1){
-        _size = _size - 1;
-        set(_size, newVal);
+      return true;
     }
     else{
       System.out.println("out of bounds bro");
+      return false;
     }
   }
 
@@ -122,16 +129,13 @@ public class SuperArray implements ListInt
     /* YOUR IMPLEMENTATION HERE */
     //int temp = _size;
     //_size = index;
-    /*
     if(index < _size){
         for (int i = index; i<_size; i++){
           set(i, _data[i + 1]);
         }
         _size = _size - 1;
-    }else if(index == _size){
-        set(index, 0);
-        _size = _size - 1;
-    }else{
+    }
+    else{
       System.out.println("out of bounds bro");
     }
   }
@@ -141,16 +145,15 @@ public class SuperArray implements ListInt
   public int size()
   {
     /* YOUR IMPLEMENTATION HERE */
-    /*
     return _size;
   }
-*/
+
 
 
   //main method for testing
   public static void main( String[] args )
   {
-  	/*
+
       SuperArray curtis = new SuperArray();
       System.out.println( "Printing empty SuperArray curtis..." );
       System.out.println( curtis );
@@ -166,10 +169,11 @@ public class SuperArray implements ListInt
       System.out.println("new length of underlying array: "
       + curtis._data.length );
       }
-      
-      */
-      /*
+
+
+
       SuperArray mayfield = new SuperArray();
+
       System.out.println("Printing empty SuperArray mayfield...");
       System.out.println(mayfield);
       mayfield.add(5);
@@ -199,9 +203,9 @@ public class SuperArray implements ListInt
       mayfield.add(1,77);
       System.out.println("Printing SuperArray mayfield post-insert...");
       System.out.println(mayfield);
-      */
-      
-      
+
+      System.out.println(mayfield.size());
+
       /*~~~~~~~~move~me~down~~~~~~~~~~~~~~V~~~~~~~~
 
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~~~~*/
