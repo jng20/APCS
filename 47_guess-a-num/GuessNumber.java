@@ -23,7 +23,9 @@
 
 /***
     DISCO:
+    
     QCC:
+    -Is it considered a recursion if you don't use a loop, have a base case, and recall the function inside the function?
  ***/
 import java.util.Scanner;
 
