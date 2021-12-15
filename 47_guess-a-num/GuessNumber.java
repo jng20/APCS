@@ -69,8 +69,10 @@ public class GuessNumber
             System.out.println("Correct! It took " + _guessCtr + " guesses");
             return;
         }else if(guess > _target){
+	    System.out.println("Too high");
             _hi = guess - 1;
         }else{
+            System.out.println("Too low");
             _lo = guess + 1;
         }
         _guessCtr++;
@@ -95,8 +97,10 @@ public class GuessNumber
                 System.out.println("Correct! It took " + _guessCtr + " guesses");
                 return;
             }else if(guess > _target){
+		System.out.println("Too high");
                 _hi = guess - 1;
             }else{
+		System.out.println("Too low");
                 _lo = guess + 1;
             }
             
