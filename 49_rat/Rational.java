@@ -2,18 +2,18 @@
   * Team Turtle Hats
   * Jacob Ng Kevin Cheng Hamim Seam
   * APCS
-  * HW42 -- Be More Rational
-  * 2021-12-04
-  * Time spent: hrs
+  * HW49 -- Rational Standards Compliance
+  * 2021-12-22
+  * Time spent: 1hr
   *****************************************************/
 
   /*
   Disco
-  -we don't need accessor methods.
+  -Rational other = (Rational) r; with r being the parameter of the method typecasted r from object to Rational
+  -Object can store anything. Maybe? It could be a string or Rational for sure.
+  -if( other instanceof Rational == true) syntax for instanceof
   QCC
-  -Jacob forgot constructors are public.
-  -Still confused about when to use static or not. br() did not work when non static. Same issue with gcd.
-  -for reduce(), you don't need parameters since you are changing this Rationals own variables.
+  -
   */
 
 public class Rational implements Comparable{
@@ -83,7 +83,9 @@ public class Rational implements Comparable{
         denominator = denominator / gcd;
     }
 
-    public int compareTo(Rational other){
+    public int compareTo(Object r){
+        //other = new Rational();
+        Rational other = (Rational) r;
         other.reduce();
         this.reduce();
         if(this.numerator == other.numerator && this.denominator == other.denominator){
@@ -106,66 +108,91 @@ public class Rational implements Comparable{
     public static void br(){
         System.out.println();
     }
-    
-    
-    public int compareTo(Object r){
-    	if( r instanceof Rational == true){
-    	return 2;
+
+
+    public boolean equals(Object other){
+    	if( other instanceof Rational == true){
+         Rational r = (Rational) other;
+         //other = new Rational();
+    	   r.reduce();
+         this.reduce();
+
+         if(this.compareTo(r) == 0){
+            return true;
+         }else{
+            return false;
+         }
     	}
-    	return -1;
+         System.out.println("You dumb dumb baby pig.");
+    	   return false;
     }
-    
+
 
     public static void main( String[] args ){
-        Rational number1 = new Rational(3,4);
-        Rational number2 = new Rational(4,6);
+      Rational number1 = new Rational(3,4);
+      Rational number2 = new Rational(6,8);
+      Rational number3 = new Rational(1,2);
+      Object number4 = new Rational(3,4);
+      Object number5 = "Not a Rational";
 
-        System.out.println(number1);
-        System.out.println(number2);
-        br();
-
- 	      System.out.println(number1.floatValue());
- 	      System.out.println(number2.floatValue());
-        br();
-
-        System.out.println("This is the gcd of number2: " + gcd(number2.numerator, number2.denominator));
-        br();
-
- 	      number1.multiply(number2);
- 	      System.out.println(number1);
- 	      System.out.println(number2);
- 	      System.out.println(number1.floatValue());
-        br();
-
- 	      number1.divide(number2);
- 	      System.out.println(number1);
- 	      System.out.println(number2);
-	      System.out.println(number1.floatValue());
-        br();
-
-        number1.add(number2);
- 	      System.out.println(number1);
- 	      System.out.println(number2);
-	      System.out.println(number1.floatValue());
-        br();
-
-        number1.subtract(number2);
- 	      System.out.println(number1);
- 	      System.out.println(number2);
-	      System.out.println(number1.floatValue());
-        br();
-
-        number1.reduce();
-        System.out.println(number1);
-        System.out.println(number1.floatValue());
-        br();
-
-        System.out.println(number1.compareTo(number2));
-        br();
+      System.out.println("Should be true: " + number1.equals(number2));
+      System.out.println("Should be false: " + number1.equals(number3));
+      System.out.println("Should be true: " + number1.equals(number4));
+      System.out.println("Should be false: " + number1.equals(number5));
 
 
- 	      Rational third = new Rational(1,0);
- 	      System.out.println(third);
-        br();
+
     }
+    /*
+      Rational number1 = new Rational(3,4);
+      Rational number2 = new Rational(4,6);
+
+      System.out.println(number1);
+      System.out.println(number2);
+      br();
+
+      System.out.println(number1.floatValue());
+      System.out.println(number2.floatValue());
+      br();
+
+      System.out.println("This is the gcd of number2: " + gcd(number2.numerator, number2.denominator));
+      br();
+
+      number1.multiply(number2);
+      System.out.println(number1);
+      System.out.println(number2);
+      System.out.println(number1.floatValue());
+      br();
+
+      number1.divide(number2);
+      System.out.println(number1);
+      System.out.println(number2);
+      System.out.println(number1.floatValue());
+      br();
+
+      number1.add(number2);
+      System.out.println(number1);
+      System.out.println(number2);
+      System.out.println(number1.floatValue());
+      br();
+
+      number1.subtract(number2);
+      System.out.println(number1);
+      System.out.println(number2);
+      System.out.println(number1.floatValue());
+      br();
+
+      number1.reduce();
+      System.out.println(number1);
+      System.out.println(number1.floatValue());
+      br();
+
+      System.out.println(number1.compareTo(number2));
+      br();
+
+
+      Rational third = new Rational(1,0);
+      System.out.println(third);
+      br();
+      */
 }
