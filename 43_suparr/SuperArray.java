@@ -37,7 +37,7 @@ public class SuperArray
   {
     /* YOUR IMPLEMENTATION HERE */
     _data = new int[10];
-    _size = 10;
+    _size = 0;
   }
 
 
