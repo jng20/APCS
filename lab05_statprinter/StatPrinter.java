@@ -1,8 +1,9 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
+// Team Blue Pandas (Jacob Ng, PreGuac, Andrew Piatetsky, Burnt Peanut, Emily Ortiz, Applesauce)
+// APCS pd6
 // L05 -- pulling it together
 // 2022-02-03r
-// time spent:  hrs
+// time spent: 2 hrs
+
 
 
 /**
@@ -65,6 +66,8 @@ public class StatPrinter
   //          _frequency.get(i) returns frequency of i in data
   //eg, for data [2,3,2,5,2,3]
   //  _frequency would be [0,0,3,2,0,1]
+
+  // O(n)
   public StatPrinter( ArrayList <Integer> data )
   {
     /* YOUR IMPLEMENTATION HERE */
@@ -87,9 +90,11 @@ public class StatPrinter
   //*************** QUESTION 01 **************************
   //precond:  data.size() > 0
   //postcond: returns largest integer in data
+
+  //0(n)
   public Integer max( ArrayList <Integer> data )
   {
-    /* YOUR IMPLEMENTATION HERE */
+
     {
       int max = 0;
       for (int i = 0; i < data.size(); i++){
@@ -113,6 +118,7 @@ public class StatPrinter
   //    isLocalMode(1) -> true
   //    isLocalMode(5) -> true
 
+//O(1)
   public boolean isLocalMode( int i )
   {
     /* YOUR IMPLEMENTATION HERE */
@@ -131,6 +137,8 @@ public class StatPrinter
 
   // //*************** QUESTION 04 **************************
   // //postcond: returns list of modes in _frequency
+
+  //O(n)
   public ArrayList<Integer> getLocalModes()
   {
     /* YOUR IMPLEMENTATION HERE */
@@ -147,6 +155,7 @@ public class StatPrinter
 
   // //*************** QUESTION 05 **************************
   // //precond:  longestBar > 0
+  //O(n^2)
   public void printHistogram( int longestBar )
   {
     /* YOUR IMPLEMENTATION HERE */

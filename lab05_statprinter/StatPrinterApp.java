@@ -1,8 +1,9 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
+// Team Blue Pandas (Jacob Ng, PreGuac, Andrew Piatetsky, Burnt Peanut, Emily Ortiz, Applesauce)
+// APCS pd6
 // L05 -- pulling it together
 // 2022-02-03r
-// time spent:  hrs
+// time spent: 2 hrs
+
 
 /***
  * class StatPrinterApp
