@@ -136,10 +136,12 @@ public class StatPrinter
     /* YOUR IMPLEMENTATION HERE */
       ArrayList <Integer> localModes = new ArrayList<Integer>();
       for(int i = 0; i < _frequency.size(); i++){
-         if(){
-            localModes.add()
+         if(isLocalMode(i)){
+            localModes.add(_frequency.get(i));    //Adds the actual local mode
+            //localModes.add(i);                  //Adds the index of the local mode
          }
       }
+      return localModes;
   }
 
 
@@ -148,7 +150,13 @@ public class StatPrinter
   public void printHistogram( int longestBar )
   {
     /* YOUR IMPLEMENTATION HERE */
-
+      for(int i = 0; i < _frequency.size(); i++){
+        System.out.print(i + " : ");
+        for(int j = 0; j < (longestBar/(max(_frequency))) * _frequency.get(i); j++){
+            System.out.print("*");
+        }
+        System.out.println();
+      }
   }
 
 }//end class StatPrinter

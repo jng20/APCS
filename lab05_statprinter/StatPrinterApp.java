@@ -45,9 +45,9 @@ public class StatPrinterApp
       //System.out.println(sp1._frequency);
       //System.out.println(sp1._frequency.size());
       sp1.printHistogram( 50 );
-    
 
-/*
+
+
     //construct data [2,3,2,5,2,3]
     //   _frequency should be [0,0,3,2,0,1]
     ArrayList<Integer> al2 = new ArrayList<Integer>();
@@ -68,7 +68,7 @@ public class StatPrinterApp
     }
     System.out.println( "histogram:" );
     sp2.printHistogram( 50 );
-    */
+
   }
 
 }//end StatPrinterApp
