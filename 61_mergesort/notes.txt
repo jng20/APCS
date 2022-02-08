@@ -1,0 +1,35 @@
+// Jacob Ng, PreGuac
+// APCS pd6
+// HW60: A Termite is-a Turtle, a Thinker is-a Turtle
+// 2022-02-07
+// time spent:  hrs
+
+Reflect on your in-class experience.
+Jot down as many observables as you can.
+Converse with mates to fill in anything you may have missed.
+Discuss how to clean up the process.
+
+
+DISCO
+*This is merge sort.
+*Mr.Mykolyk can shuffle and bridge very well
+
+QCC
+*We were given the task of taking two sorted lists and combining them into 1 sorted list.
+Originally, what we did was compared the first elements in each list and which ever was smaller
+we added to the big list. Then, we remove the item from the small list and repeat the whole process.
+However, we then went on to try to sort a deck of cards split into to halves and we didn't use this process.
+Instead, we kept splitting those halves into more halves until the half was sorted(you had one card). Then, were
+supposed to give our half back to whoever gave it to us and then they would sort the halves they received and then repeat
+until supposedly the deck comes back together sorted. This did not happen because we often failed to properly give back to the right person.
+
+*Why is it faster to merge 2 sorted lists into 1 sorted list vs 2 unsorted lists into 1 sorted list?
+*Won't we run into a problem since we don't have 52 people in the class? Won't some people have to receive and give cards more than twice.
+
+*I think it would help if people lined up on the wall in some order so that it's easier to know who to give the cards back to.
+Or we can give people numbers or some sort of ID to help people remember who to give cards back to.
+
+THINKER FIRMWARE (Instructions each turtle follows)
+*If you have more than one card in your hand, evenly distribute the cards you have to 2 different thinkers who don't have cards. Leave hands out.
+*If you have 1 card in your hand, return it back to whomever gave it to you.
+*If cards are returned to you, sort cards and return to whomever gave it to you.
