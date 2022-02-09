@@ -1,8 +1,8 @@
-// Jacob Ng, PreGuac
+// Team Two Blue Pandas (Jacob Ng, PreGuac, Emily Ortiz, Applesauce)
 // APCS pd6
-// HW60: A Termite is-a Turtle, a Thinker is-a Turtle
-// 2022-02-07
-// time spent:  hrs
+// HW61: Instructions so Simple...
+// 2022-02-08
+// time spent: 2 hrs
 
 Reflect on your in-class experience.
 Jot down as many observables as you can.
@@ -33,3 +33,8 @@ THINKER FIRMWARE (Instructions each turtle follows)
 *If you have more than one card in your hand, evenly distribute the cards you have to 2 different thinkers who don't have cards. Leave hands out.
 *If you have 1 card in your hand, return it back to whomever gave it to you.
 *If cards are returned to you, sort cards and return to whomever gave it to you.
+
+new
+* If you have more than one card distribute it in 2 halves to 2 other turtles.
+* If you have 1 card in your hand, you are sorted and thus should return your card to whichever turtle gave it to you.
+* If you receive your sorted halves back, you should merge sort the halves you have and then return the sorted cards to sender.

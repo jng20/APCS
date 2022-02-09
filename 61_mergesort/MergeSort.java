@@ -1,9 +1,18 @@
+// Team Two Blue Pandas (Jacob Ng, PreGuac, Emily Ortiz, Applesauce)
+// APCS pd6
+// HW61: Instructions so Simple...
+// 2022-02-08
+// time spent: 2 hrs
+
 /***
   class MergeSort
   Implements mergesort on array of ints.
 
   Summary of Algorithm:
-
+  1.Check if input array is of size 1 or less because that means it's sorted.
+  2.If not,then split the array into 2 halves.
+  3.Repeat step 1 for each half
+  4. When both halves are sorted, merge and sort them.
   ***/
 
 public class MergeSort
@@ -19,25 +28,49 @@ public class MergeSort
   {
     int aCtr = 0;
     int bCtr = 0;
+    int outputCtr = 0;
     int lengtha = a.length;
     int lengthb = b.length;
     int[] output = new int[a.length + b.length];
 
-    for (int i = 0; i < output.length; i++){
-
-      if (aCtr != lengtha){
+    // for (int i = 0; i < output.length; i++){
+    //
+    //   if (aCtr != lengtha){
+    //     if(a[aCtr] < b[bCtr]){
+    //       output[i] = a[aCtr];
+    //       aCtr ++;
+    //     }
+    //   }else {
+    //       if(bCtr != lengthb){
+    //         output[i] = b[bCtr];
+    //         bCtr++;
+    //       }
+    //   }
+    // }
+    while(aCtr < lengtha && bCtr < lengthb){
         if(a[aCtr] < b[bCtr]){
-          output[i] = a[aCtr];
-          aCtr ++;
+            output[outputCtr] = a[aCtr];
+            aCtr ++;
+            outputCtr++;
+        }else {
+              output[outputCtr] = b[bCtr];
+              bCtr++;
+              outputCtr++;
         }
-      }else {
-          if(bCtr != lengthb){
-            output[i] = b[bCtr];
-            bCtr++;
-          }
-      }
     }
 
+    if(aCtr == lengtha){
+        for(int i = bCtr; i < lengthb; i++){
+          output[outputCtr] = b[i];
+          outputCtr++;
+        }
+    }
+    else{
+        for(int i = aCtr; i < lengtha; i++){
+          output[outputCtr] = a[i];
+          outputCtr++;
+        }
+    }
     return output;
   }//end merge()
 
@@ -53,8 +86,8 @@ public class MergeSort
         return arr;
       }
       int mid = arr.length/2;
-      int[] firsthalf = new int[mid + 1];
-      int[] secondhalf = new int[mid + 1];
+      int[] firsthalf = new int[mid];
+      int[] secondhalf = new int[arr.length - mid];
 
       for(int i = 0; i < mid; i++){
         firsthalf[i] = arr[i];
@@ -111,7 +144,11 @@ public class MergeSort
 
       System.out.println("\nMerging arr4 and arr6: ");
       printArray( merge(arr4,arr6) );
-/*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~
+
+      System.out.println("\nMerging arr4 and arr1: ");
+      printArray( merge(arr4,arr1) );
+
+
       System.out.println("\nSorting arr4-7...");
       printArray( sort( arr4 ) );
       printArray( sort( arr5 ) );
