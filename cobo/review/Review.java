@@ -165,8 +165,10 @@ public class Review {
 
   public static double totalSentiment (String fileName){
       double totalvalue = 0.0;
-      for(String word : filename){
-          totalvalue += 
+      String wordlist = textToString(fileName);
+      wordlist = removePunctuation(wordlist);
+      for(String word : wordlist){
+          totalvalue += sentimentVal(word);
       }
   }
 
@@ -178,8 +180,8 @@ public class Review {
       System.out.println(sentimentVal("aaron"));
       System.out.println(sentimentVal("accent"));
 
+      System.out.println(textToString("SimpleReview.txt"));
       System.out.println(totalSentiment("SimpleReview.txt"));
-
 
   }
 }
