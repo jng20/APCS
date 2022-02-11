@@ -165,11 +165,30 @@ public class Review {
 
   public static double totalSentiment (String fileName){
       double totalvalue = 0.0;
-      String wordlist = textToString(fileName);
-      wordlist = removePunctuation(wordlist);
-      for(String word : wordlist){
+      String sentences = textToString(fileName);
+      String[] words = sentences.split(" ");                    //Thanks to PSerb.
+      //  ArrayList<String> words = new ArrayList<String>();
+      // int start = 0;
+      // int end = sentences.indexOf(" ", start);
+      // String word;
+
+      // while(end < sentences.lastIndexOf(" ")){
+      //     word = removePunctuation(sentences.substring(start, end));
+      //     words.add(word);
+      //     start = end;
+      //     end = sentences.indexOf(" ", start);
+      // }
+      //
+      // start = end;
+      // end = sentences.indexOf(getPunctuation(sentences), start);
+      // word = removePunctuation(sentences.substring(start, end));
+      // words.add(word);
+
+      for(String word : words){
+          removePunctuation(word);
           totalvalue += sentimentVal(word);
       }
+      return totalvalue;
   }
 
   public static void main(String[] args){
@@ -180,7 +199,11 @@ public class Review {
       System.out.println(sentimentVal("aaron"));
       System.out.println(sentimentVal("accent"));
 
-      System.out.println(textToString("SimpleReview.txt"));
+      //String wordlist = textToString("SimpleReview.txt");
+      //wordlist = removePunctuation(wordlist);
+      //System.out.println(wordlist);
+      //System.out.println(textToString("SimpleReview.txt"));
+      totalSentiment("SimpleReview.txt");
       System.out.println(totalSentiment("SimpleReview.txt"));
 
   }

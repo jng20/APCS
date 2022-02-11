@@ -1,5 +1,11 @@
+// Jacob Ng, PreGuac
+// APCS pd6
+// HW63: Read/Review/Expand
+// 2022-02-10
+// time spent: 2 hrs
 
+*sentiment is a hashmap
 
-
-
-*sentiment is the hashmap
+*totalSentiment() We need to figure out a way to get each individual word of the sentence and then take the value of each word.
+*Are we allowed to use String.split()?
+*We should use removePunctuation for every word so that it doesn't mess up with the words in the csv file.
