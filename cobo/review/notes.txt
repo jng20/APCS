@@ -43,9 +43,22 @@ public static double totalSentiment (String fileName) {
 
 3.
 public static int starRating(String fileName) {
-    return 1; // no idea what I'm supposed to do
-  }
 
+  double sentiment = totalSentiment(fileName);
+  if (sentiment > 29) {
+    return 4;
+  }
+  else if (sentiment > 19) {
+    return 3;
+  }
+  else if (sentiment > 9) {
+    return 2;
+  }
+  else if (sentiment < -3 ) {
+    return 0;
+  }
+  return 1;
+}
 4. First I converted the text file into a String, and then, using the split(" ") method, to convert the String into a array of Strings (each index containing a seperate word)
 Then I used a for each loop to find the sentimental value of each word and combined them, storing the sum in an external variable.
 
@@ -64,7 +77,7 @@ It's is necessary to add 1 to position when copying the remainding part of the S
 
 
 5. Static basically means that it is the same for each object, there are no variable globals being used and the value is always going to be the same when all else is kept the same.
-you can't call static methods when you create an object. However when you run everythin via the main method, static is the way to go
+you can't call static methods when you create an object. However when you run everythin via the main method, static is the way to go. You don't need an instance of the class to use static methods.
 
 6. We could reverse the if statement and set all of the positive adjectives to negative ones and vice versa.
 
