@@ -1,3 +1,11 @@
+// Team Blue Pandas (Jacob Ng, PreGuac, Andrew Piatetsky, Burnt Peanut, Emily Ortiz, Applesauce)
+// APCS pd6
+// L05 -- pulling it together
+// 2022-02-03r
+// time spent:
+
+
+
 import java.util.Scanner;
 import java.io.File;
 import java.util.HashMap;
@@ -37,7 +45,7 @@ public class Review {
       Scanner input = new Scanner(new File("positiveAdjectives.txt"));
       while(input.hasNextLine()){
         String temp = input.nextLine().trim();
-        System.out.println(temp);
+        // System.out.println(temp);
         posAdjectives.add(temp);
       }
       input.close();
@@ -163,48 +171,150 @@ public class Review {
     }
   }
 
-  public static double totalSentiment (String fileName){
-      double totalvalue = 0.0;
-      String sentences = textToString(fileName);
-      String[] words = sentences.split(" ");                    //Thanks to PSerb.
-      //  ArrayList<String> words = new ArrayList<String>();
-      // int start = 0;
-      // int end = sentences.indexOf(" ", start);
-      // String word;
 
-      // while(end < sentences.lastIndexOf(" ")){
-      //     word = removePunctuation(sentences.substring(start, end));
-      //     words.add(word);
-      //     start = end;
-      //     end = sentences.indexOf(" ", start);
-      // }
-      //
-      // start = end;
-      // end = sentences.indexOf(getPunctuation(sentences), start);
-      // word = removePunctuation(sentences.substring(start, end));
-      // words.add(word);
 
-      for(String word : words){
-          removePunctuation(word);
-          totalvalue += sentimentVal(word);
-      }
-      return totalvalue;
+
+
+  /* THE HW SECTION - THIS IS ME AND MY GROUP MEMBERS WORK  */
+
+
+  // Section 2, question 1:
+  public static double totalSentiment (String fileName) {
+    String text = textToString(fileName);
+    String[] s = text.split(" ");
+    double total = 0;
+    for (String word : s) {
+      word = removePunctuation(word);
+      total += sentimentVal(word);
+    }
+    return total;
   }
 
-  public static void main(String[] args){
-      System.out.println(sentimentVal("happily"));
-      System.out.println(sentimentVal("terrible"));
-      System.out.println(sentimentVal("cold"));
-      System.out.println(sentimentVal("foo"));
-      System.out.println(sentimentVal("aaron"));
-      System.out.println(sentimentVal("accent"));
+  // Section 2, question 3:
+  public static int starRating(String fileName) {
 
-      //String wordlist = textToString("SimpleReview.txt");
-      //wordlist = removePunctuation(wordlist);
-      //System.out.println(wordlist);
-      //System.out.println(textToString("SimpleReview.txt"));
-      totalSentiment("SimpleReview.txt");
-      System.out.println(totalSentiment("SimpleReview.txt"));
+    double sentiment = totalSentiment(fileName);
+    if (sentiment > 29) {
+      return 4;
+    }
+    else if (sentiment > 19) {
+      return 3;
+    }
+    else if (sentiment > 9) {
+      return 2;
+    }
+    else if (sentiment < -3 ) {
+      return 0;
+    }
+    return 1;
+  }
 
+  // Activity 3, question 1
+  public static String getAdj(String filename) {
+    String positive = "";
+    String negative = "";
+
+    String csv = textToString(filename);
+
+    System.out.println("");
+
+    String[] text = csv.split(" ");
+
+    for (String s : text) {
+      if (Double.parseDouble(s.split(",")[1]) > 0) {
+
+        positive += " " + s.split(",")[0];
+      }
+      if (Double.parseDouble(s.split(",")[1]) <= 0) {
+        negative += " " + s.split(",")[0];
+      }
+    }
+
+    return negative;
+    // return positive;
+  }
+
+
+  public static String fakeReview(String fileName) {
+
+    String file = textToString(fileName);
+    String[] text = file.split(" ");
+
+    String[] positive = textToString("positiveAdjectives.txt").split(" ");
+    String[] negative = textToString("negativeAdjectives.txt").split(" ");
+
+
+    for (int i = 0; i < text.length; i++) {
+      int randIndexPos = (int) (Math.random() * positive.length);
+      int randIndexNeg = (int) (Math.random() * negative.length);
+
+      if (text[i].indexOf("*") == 0) {
+
+        text[i] = text[i].substring(1);
+
+        if (sentimentVal(text[i]) > 0) {
+          text[i] = positive[randIndexPos];
+        }
+        else {
+          text[i] = negative[randIndexNeg];
+        }
+      }
+    }
+
+    String stringText = "";
+    for (String s : text) {
+      stringText += " " + s;
+    }
+    return stringText.substring(1);
+  }
+
+
+  // replaces each word in a txt file with a "*" infront with a stronger word
+  public static String updatedFakeReview(String filename) {
+    String file = textToString(filename);
+    String[] text = file.split(" ");
+
+    String[] positive = textToString("positiveAdjectives.txt").split(" ");
+    String[] negative = textToString("negativeAdjectives.txt").split(" ");
+
+
+    for (int i = 0; i < text.length; i++) {
+      int randIndexPos = (int) (Math.random() * positive.length);
+      int randIndexNeg = (int) (Math.random() * negative.length);
+      if (text[i].indexOf("*") == 0) {
+        text[i] = text[i].substring(1);
+        if (sentimentVal(text[i]) > 0) {
+          while (true) {
+            if (sentimentVal(positive[randIndexPos]) > sentimentVal(text[i])) {
+              text[i] = positive[randIndexPos];
+              break;
+            }
+            randIndexPos = (int) (Math.random() * positive.length);
+          } // end of while loop
+        }
+        else {
+          while (true) {
+            if (sentimentVal(negative[randIndexNeg]) < sentimentVal(text[i])) {
+              text[i] = negative[randIndexNeg];
+              break;
+            }
+            randIndexNeg = (int) (Math.random() * negative.length);
+          } // end of while loop
+        }
+      }
+    } // end of for i loop
+
+    String stringText = "";
+    for (String s : text) {
+      stringText += " " + s;
+    }
+    return stringText.substring(1);
+  }
+
+
+
+  public static void main(String[] args) {
+    System.out.println(updatedFakeReview("SampleReview.txt"));
+    System.out.println(fakeReview("SampleReview.txt"));
   }
 }
