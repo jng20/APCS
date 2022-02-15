@@ -1,4 +1,12 @@
 /*
+Jacob Ng + Jeffery Tang
+APCS
+HW64 -- Revisitation
+2022-02-14
+time spent: .6 hr
+*/
+
+/*
 We have a number of bunnies and each bunny has two big floppy ears. We want to compute the total number of ears across all the bunnies recursively (without loops or multiplication).
 
 bunnyEars(0) → 0
