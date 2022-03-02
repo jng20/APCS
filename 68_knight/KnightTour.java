@@ -15,7 +15,14 @@
  * $ java KnightTour [N]
  *
  * ALGO
- *
+ *  Check if there are n*n numbers
+ -  check if the move is possible
+ -  if it isn't possible, set this space to 0, "go back" and try a different move
+ -  if there are n*n 0s on the board, a solution can't be found from that point? if the first point ends up a 0 a solution does not exist?
+ -
+ -
+ -
+
  * DISCO
  *
  * QCC
@@ -64,14 +71,19 @@ public class KnightTour
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //for random starting location, use lines below:
-    //int startX = //YOUR MATH CONSTRUCT FOR GENERATING A RANDOM LEGAL X VALUE
-    //int startY = //YOUR MATH CONSTRUCT FOR GENERATING A RANDOM LEGAL X VALUE
+    //int startX = (int)(Math.random() * n)//YOUR MATH CONSTRUCT FOR GENERATING A RANDOM LEGAL X VALUE
+    //int startY = (int)(Math.random() * n)//YOUR MATH CONSTRUCT FOR GENERATING A RANDOM LEGAL X VALUE
     //tf.findTour( startX, startY, 1 );   // 1 or 0 ?
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // PUSHING FARTHER...
     // Systematically attempt to solve from every position on the board?
+    // for( i=0; i < n; i++ ) {
+    //   for( j=0; j < n; j++ ){
+    //     tf.findTour( i+2, j+2, 1 );
+    //   }
+    // }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   }//end main()
@@ -84,12 +96,12 @@ class TourFinder
   //instance vars
   private int[][] _board;
   private int _sideLength; //board has dimensions n x n
-  private boolean _solved = ???
+  //private boolean _solved = ???
 
   //constructor -- build board of size n x n
   public TourFinder( int n )
   {
-    _sideLength = n + 4
+    _sideLength = n + 4;
 
     //init 2D array to represent square board with moat
     _board = new int[_sideLength][_sideLength];
@@ -97,15 +109,35 @@ class TourFinder
     //SETUP BOARD --  0 for unvisited cell
     //               -1 for cell in moat
     //---------------------------------------------------------
-    ???
+    //???
+    for(int col = 0; col < _sideLength; col ++){
+        _board[0][col] = -1;
+        _board[1][col] = -1;
+        _board[_sideLength-1][col] = -1;
+        _board[_sideLength-2][col] = -1;
+    }
+
+    for(int row = 0; row < _sideLength; row ++){
+        _board[row][0] = -1;
+        _board[row][1] = -1;
+        _board[row][_sideLength-1] = -1;
+        _board[row][_sideLength-2] = -1;
+    }
+
     //---------------------------------------------------------
 
   }//end constructor
 
-
+// counter for row
+// counter for collumn
+// if row is first two or last two, cell = -1
+// if collumn is first two or last two, cell = -1
+// else, cell = 0
   /**
    * "stringify" the board
    **/
+
+
   public String toString()
   {
     //send ANSI code "ESC[0;0H" to place cursor in upper left
@@ -114,8 +146,8 @@ class TourFinder
     //emacs shortcut: M-x quoted-insert, then press ESC
 
     int i, j;
-    for( i=0; i < _sideLength+4; i++ ) {
-      for( j=0; j < _sideLength+4; j++ )
+    for( i=0; i < _sideLength; i++ ) {
+      for( j=0; j < _sideLength; j++ )
         retStr = retStr + String.format( "%3d", _board[j][i] );
       //"%3d" allots 3 spaces for each number
       retStr = retStr + "\n";
@@ -145,21 +177,25 @@ class TourFinder
    * @param y      starting y-coord
    * @param moves  number of moves made so far
    **/
+
+
+
   public void findTour( int x, int y, int moves )
   {
     //delay(50); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
-    if ( ??? ) System.exit(0);
+    //if (   ) System.exit(0);                                //dont know whats happening here
 
     //primary base case: tour completed
-    if ( ??? ) {
-      ???
+    if ( moves == (_sideLength - 4)*(_sideLength - 4) ) {
+      //???
+      _board[x][y] = moves;
       System.out.println( this ); //refresh screen
       return;
     }
     //other base case: stepped off board or onto visited cell
-    if ( ??? ) {
+    if ( _board[x][y] != 0) {
       return;
     }
     //otherwise, mark current location
@@ -167,7 +203,7 @@ class TourFinder
     else {
 
       //mark current cell with current move number
-      _board[x][y] = ???
+      _board[x][y] = moves;
 
       System.out.println( this ); //refresh screen
 
@@ -182,11 +218,29 @@ class TourFinder
        *     g . . . b
        *     . h . a .
       ******************************************/
-      ???
+      //???
+        findTour(  x+1,  y+2, moves + 1);
+        findTour(  x+1,  y-2, moves + 1);
+        findTour(  x+2,  y+1, moves + 1);
+        findTour(  x-2,  y+1, moves + 1);
+        findTour(  x-1,  y+2, moves + 1);
+        findTour(  x-1,  y-2, moves + 1);
+        findTour(  x+2,  y-1, moves + 1);
+        findTour(  x-2,  y-1, moves + 1);
+
 
       //If made it this far, path did not lead to tour, so back up...
       // (Overwrite number at this cell with a 0.)
-        ???
+      //  ???
+      // for(int i=0; i < _sideLength; i++ ) {
+      //   for(int j=0; j < _sideLength; j++ ){
+      //       if (_board[i][j]== moves - 1){
+      //           _board[i][j]= 0;
+      //       }
+      //   }
+      // }
+      _board[x][y]= 0;
+
 
       System.out.println( this ); //refresh screen
     }
