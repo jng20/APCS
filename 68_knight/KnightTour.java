@@ -185,7 +185,7 @@ class TourFinder
     //delay(50); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
-    //if (   ) System.exit(0);                                //dont know whats happening here
+    if ( moves == (_sideLength - 4)*(_sideLength - 4)+1  ) System.exit(0);                                //dont know whats happening here
 
     //primary base case: tour completed
     if ( moves == (_sideLength - 4)*(_sideLength - 4) ) {
@@ -240,9 +240,8 @@ class TourFinder
       //   }
       // }
       _board[x][y]= 0;
-
-
       System.out.println( this ); //refresh screen
+      return;
     }
   }//end findTour()
 
