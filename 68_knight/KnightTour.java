@@ -1,8 +1,8 @@
 // Clyde Sinclair
 // APCS pd0
 // HW68 -- recursively probing for a closed cycle
-// 2022-02-28m
-// time spent:  hrs
+// 2022-03-01
+// time spent: too many hrs
 
 /***
  * SKELETON
@@ -15,23 +15,26 @@
  * $ java KnightTour [N]
  *
  * ALGO
- *  Check if there are n*n numbers
- -  check if the move is possible
- -  if it isn't possible, set this space to 0, "go back" and try a different move
- -  if there are n*n 0s on the board, a solution can't be found from that point? if the first point ends up a 0 a solution does not exist?
- -
- -
+ *  Check if you will be placing an n*n number and if the space you are placing the number is available. If true you have found the solution.
+    else
+ -  check if any move is possible
+ -  if none are possible, set this space to 0, "go back" and try a different move/ start the new path
+ - // if there are n*n 0s on the board, a solution can't be found from that point? if the first point ends up a 0 a solution does not exist?
  -
 
  * DISCO
- *
+ *  Theres a solved boolean
+    you don't need a return statement to recall a method for recursion
  * QCC
- *
+ *  Struggled to figure out how to go backwards and how to know if solved.
+    Ran into problems because the findTour method is void
+    Forgot there was a solved boolean
+
  * Mean execution times for boards of size n*n:
- * n=5   __s    across __ executions
- * n=6   __s    across __ executions
- * n=7   __s    across __ executions
- * n=8   __s    across __ executions
+ * n=5   5.462s    across __ executions
+ * n=6   4m33.505s    across __ executions
+ * n=7   too many s (Over 12 minutes)    across __ executions
+ * n=8   way too many s    across __ executions
  *
  * POSIX PROTIP: to measure execution time from BASH, use time program:
  * $ time java KnightTour 5
@@ -71,16 +74,16 @@ public class KnightTour
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //for random starting location, use lines below:
-    //int startX = (int)(Math.random() * n)//YOUR MATH CONSTRUCT FOR GENERATING A RANDOM LEGAL X VALUE
-    //int startY = (int)(Math.random() * n)//YOUR MATH CONSTRUCT FOR GENERATING A RANDOM LEGAL X VALUE
+    //int startX = (int)(Math.random() * n) +2//YOUR MATH CONSTRUCT FOR GENERATING A RANDOM LEGAL X VALUE
+    //int startY = (int)(Math.random() * n) +2//YOUR MATH CONSTRUCT FOR GENERATING A RANDOM LEGAL X VALUE
     //tf.findTour( startX, startY, 1 );   // 1 or 0 ?
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // PUSHING FARTHER...
     // Systematically attempt to solve from every position on the board?
-    // for( i=0; i < n; i++ ) {
-    //   for( j=0; j < n; j++ ){
+    // for( i=0; i < n+2; i++ ) {
+    //   for( j=0; j < n+2; j++ ){
     //     tf.findTour( i+2, j+2, 1 );
     //   }
     // }
@@ -96,7 +99,7 @@ class TourFinder
   //instance vars
   private int[][] _board;
   private int _sideLength; //board has dimensions n x n
-  //private boolean _solved = ???
+  private boolean _solved = false;
 
   //constructor -- build board of size n x n
   public TourFinder( int n )
@@ -185,13 +188,14 @@ class TourFinder
     //delay(50); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
-    if ( moves == (_sideLength - 4)*(_sideLength - 4)+1  ) System.exit(0);                                //dont know whats happening here
+    if ( _solved  ) System.exit(0);                                //didn't know what was happening here until Gabriel came in
 
     //primary base case: tour completed
-    if ( moves == (_sideLength - 4)*(_sideLength - 4) ) {
+    if ( moves == (_sideLength - 4)*(_sideLength - 4) &&  _board[x][y] == 0) {              //Senpai Gabriel is goated
       //???
       _board[x][y] = moves;
       System.out.println( this ); //refresh screen
+      _solved = true;
       return;
     }
     //other base case: stepped off board or onto visited cell
@@ -240,8 +244,8 @@ class TourFinder
       //   }
       // }
       _board[x][y]= 0;
-      System.out.println( this ); //refresh screen
-      return;
+      //System.out.println( this ); //refresh screen
+    //  return;
     }
   }//end findTour()
 
