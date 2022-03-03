@@ -56,7 +56,10 @@ Go forth and mark your path. Can you go forward, left, or right again?
 Repeat this until you're at the end
 
 Easy (# are the spaces you can move through. s is start. e is end)
-
+S###  
+#	#
+# ##
+#	 e
 
 
 Medium (?) Maze: (The + is equal to #, aka walls):
