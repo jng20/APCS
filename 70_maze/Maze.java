@@ -200,11 +200,11 @@ public class Maze
 
     //drop our hero into maze at random location on path
     // YOUR RANDOM-POSITION-GENERATOR CODE HERE
-    int startX = (int) Math.random()*(ms._maze.length + 2);
-    int startY = (int) Math.random()*(ms._maze.length + 2);
-    while(!onPath(startX, startY)){
-      startX = (int) Math.random()*(ms._maze.length + 2);
-      startY = (int) Math.random()*(ms._maze.length + 2);
+    int startX = (int) Math.random()*(ms.length + 2);
+    int startY = (int) Math.random()*(ms.length + 2);
+    while(!ms.onPath(startX, startY)){
+      startX = (int) Math.random()*(ms.length + 2);
+      startY = (int) Math.random()*(ms.length + 2);
     }
     ms.solve( startX, startY );
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
