@@ -1,0 +1,21 @@
+// Team Blue Pandas (Jacob Ng, PreGuac, Andrew Piatetsky, Burnt Peanut, Emily Ortiz, Applesauce)
+// APCS pd6
+// HW71: Whut Dis.
+// 2022-03-07
+
+/*
+DISCO
+Absolutely nothing. Everything we hypothesized in our group was wrong. Only thing still standing is that 
+we have 2 sections: 1 section full of the numbers less than what was at index c or in our code, int middle
+		     1 section full of the numbers greater than what was at index c or in our code, int middle
+QCC
+Suspect Pivot Sort? Maybe int middle really shouldn't be the middle but the pivot? Don't know if 
+int begin and begin end are correct.
+Jacob - don't know what pivot sort is but heard of it and this pseudocode seems like there's a pivot.
+
+q0: What does it do?
+the list is split into 2 sections: one for values greater than arr[c] and one for values less than arr[c]
+
+q1: What is its Big-Oh runtime?
+O(n) because we have one for loop and it traverses the list once.
+*/
