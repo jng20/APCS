@@ -1,8 +1,9 @@
-// Clyde Sinclair
-// APCS pd0
-// HW69 -- maze solving (blind, depth-first)
-// 2022-03-03r
-// time spent:  hrs
+
+// Nora Miller, Jacob Ng, Corina Chen
+// APCS
+// HW70: Thinkers of the Corn
+// 2022-03-02
+// time spent: 1.5
 
 /***
  * SKEELTON for
@@ -16,11 +17,19 @@
  *
  * ALGORITHM for finding exit from starting position:
  *  <INSERT YOUR SUMMARY OF ALGO HERE>
- *
+ *Go forth and mark your path with '@'. Can you go in any direction?
+   If not, back up until you can go in a direction on an unmarked path. also set all the spaces you've visited twice to dots.
+   If yes, keep going.
+ Repeat this until you're at the end
  * DISCO
  *
  * QCC
- *
+ *  -How do we access the length and width of the maze? Should we make accessor methods?
+ * Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 56 out of bounds for length 25
+   kept appearing in our random start generator but we don't know where or why since we made
+   an accessor method for the width and height of the maze. startX being the width startY being the height
+   Why did this error stop when startX was made the height and startY was made the width?
+
  ***/
 
 //enable file I/O
@@ -168,6 +177,12 @@ class MazeSolver
      return  _maze[y][x]==(PATH);
   }
 
+  public int height(){
+      return h;
+  }
+  public int width(){
+      return w;
+  }
 }//end class MazeSolver
 
 
@@ -200,13 +215,36 @@ public class Maze
 
     //drop our hero into maze at random location on path
     // YOUR RANDOM-POSITION-GENERATOR CODE HERE
-    int startX = (int) Math.random()*(ms.length + 2);
-    int startY = (int) Math.random()*(ms.length + 2);
-    while(!ms.onPath(startX, startY)){
-      startX = (int) Math.random()*(ms.length + 2);
-      startY = (int) Math.random()*(ms.length + 2);
+
+  //  System.out.println(ms.onPath(3,2));
+  int startY = (int) (Math.random()*ms.width() );
+  int startX = (int) (Math.random()*ms.height() );
+    boolean isOnPath = false;
+    while(isOnPath == false){
+      //System.out.println(ms.onPath(startX,startY));
+      if(ms.onPath(startX, startY) ){
+          isOnPath =true;
+          ms.solve( startX, startY );
+      }else{
+        startY = (int) (Math.random()*ms.width() );
+        startX = (int) (Math.random()*ms.height() );
+      }
     }
-    ms.solve( startX, startY );
+  // int startX = (int) (Math.random()*80);
+  // int startY = (int) (Math.random()*25);
+  //   boolean isOnPath = false;
+  //   while(isOnPath == false){
+  //     //System.out.println(ms.onPath(startX,startY));
+  //     if(ms.onPath(startX, startY) ){
+  //         isOnPath =true;
+  //         ms.solve( startX, startY );
+  //     }else{
+  //       startX = (int) (Math.random()*80);
+  //       startY = (int) (Math.random()*25);
+  //     }
+  //   }
+
+    //ms.solve( startX, startY );
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
