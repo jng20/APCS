@@ -12,6 +12,7 @@ QCC
 Suspect Pivot Sort? Maybe int middle really shouldn't be the middle but the pivot? Don't know if 
 int begin and begin end are correct.
 Jacob - don't know what pivot sort is but heard of it and this pseudocode seems like there's a pivot.
+Emily - maybe this function does nothing useful, or it is supposed to make an array appear random
 
 q0: What does it do?
 the list is split into 2 sections: one for values greater than arr[c] and one for values less than arr[c]
