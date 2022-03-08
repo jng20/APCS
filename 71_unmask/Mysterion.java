@@ -70,7 +70,7 @@ public class Mysterion{
 		mysterion(foo3, 0, 2, 4);
 		mysterion(foo4, 0, 2, 4);
 		mysterion(foo5, 0, 3, 6);
-		mysterion(foo6, 0, 4, 8);
+		mysterion(foo6, 0, 8, 8);
 	}
 }
 
