@@ -2,6 +2,7 @@
 // APCS pd6
 // HW72: So So Fast
 // 2022-03-08
+// Time spent: 2 hours
 
 /*
 DISCO
@@ -91,7 +92,7 @@ public class FastSelect{
         printArr(array);
         //System.out.println();
         int piv_Value = array[pivot];
-        s = partition(array, first, end, pivot);
+        s = partition(array, first, end, pivot); // s is index of pivot value after partition
 
         // if(partition(array, first, end, pivot) < (y - 1)){            // y-1 because the yth element is the y - 1 index.
         //     s = partition(array, first, end, pivot);
@@ -100,13 +101,24 @@ public class FastSelect{
         // }else if(partition(array, first, end, pivot) > (y - 1) ){
         //     s = partition(array, first, end, pivot);
         //     return fastSelect(y, array, first, s-1, s-1);
+
         if(s == (y-1)){
             return piv_Value;
-        }else if(s < (y -1)){
+        }else if(s < (y -1)){ //index of pivot less than where you want it
             return fastSelect(y-s,array, s, end, end);
-        }else{                                                          //if(s > (y - 1) )
+        }else{// index of pivot greater than where you want it                                                          //if(s > (y - 1) )
             return fastSelect(y, array, first, s-1, s-1);
         }
+
+
+
+        // // assuming pivot value starts at the end
+        // for(int i = array.length-1; i >= 0; i --){
+        //   s = partition(array, first, end, i);
+        //   if (s == (y-1)){
+        //     return piv_Value;
+        //   }
+        // } return -1;
     }
 
     public static void main(String[] args){
