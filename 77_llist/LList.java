@@ -1,21 +1,32 @@
 /*
 Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauce)
 APCS pd6
-HW76: We Got a Little Ol' Convoy
-2022-03-14
-time spent: 1 hours
-KtS consumed: 3
+HW77: Insert|Remove
+2022-03-15
+time spent: 1.5 hours
+KtS consumed: many
 */
 
 /*
+DISCO
+Add at index algo is not necessarily the same as remove.
+
 QCC
-* Is the tail end supposed to be 0 index?
-* What do we do with head node?
-*?
-/***
- * class LList
- * Implements a linked list of LLNodes, each containing String data
- **/
+
+ALGO ADD
+check where we are adding.
+if 0 index just use add
+if adding to the end of the list, traverse until last node and set next node to new added node
+If in the middle, we need the information about the node currently at the index and the node at the index -1
+set the index -1 node's next node to the new added node. set the new added node's next node to the old node that was at the index.
+
+ALGO REM
+Check where we are adding
+if index 0, then traverse the list one node but don't use a temp. Basically Set the head to the next node
+if last index, go to second to last node and set next node to NULL
+If in the middle we need the node before and after the node at the index.
+set node at index - 1 next node to node at index + 1
+*/
 
 public class LList implements List //interface def must be in this dir
 {
@@ -27,8 +38,7 @@ public class LList implements List //interface def must be in this dir
   // constructor -- initializes instance vars
   public LList( )
   {
-    // YOUR CODE HERE
-    _head = new LLNode ("", null);           //what do we do for head? Is an empty node possible?
+    _head = null; //at birth, a list has no elements
     _size = 0;
   }
 
@@ -37,14 +47,9 @@ public class LList implements List //interface def must be in this dir
 
   public boolean add( String newVal )
   {
-    // YOUR CODE HERE
-    if (_size == 0) { _head.setCargo(newVal); }
-    LLNode temp = _head;
-    while( temp.getNext() != null ) {       //use .getnext so that temp equals the last node not null
-    temp = temp.getNext();
-    }
-    temp.setNext(new LLNode(newVal, null));
-    _size ++;
+    LLNode tmp = new LLNode( newVal, _head );
+    _head = tmp;
+    _size++;
     return true;
   }
 
@@ -54,13 +59,16 @@ public class LList implements List //interface def must be in this dir
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
 
-    // YOUR CODE HERE
-    LLNode temp = _head;
-    for(int i = 0; i < _size - index; i++){
-      temp = temp.getNext();
-      //System.out.println(temp);
-    }
-      return temp.getCargo();
+    String retVal;
+    LLNode tmp = _head; //create alias to head
+
+    //walk to desired node
+    for( int i=0; i < index; i++ )
+      tmp = tmp.getNext();
+
+    //check target node's cargo hold
+    retVal = tmp.getCargo();
+    return retVal;
   }
 
 
@@ -70,70 +78,195 @@ public class LList implements List //interface def must be in this dir
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
 
-    // YOUR CODE HERE
-    LLNode temp = _head;
-    for(int i = 0; i < _size - index ; i++){
-      temp = temp.getNext();
-    }
-      return temp.setCargo(newVal);
+    LLNode tmp = _head; //create alias to head
+
+    //walk to desired node
+    for( int i=0; i < index; i++ )
+      tmp = tmp.getNext();
+
+    //store target node's cargo
+    String oldVal = tmp.getCargo();
+
+    //modify target node's cargo
+    tmp.setCargo( newVal );
+
+    return oldVal;
   }
 
 
   //return number of nodes in list
-  public int size()
-  {
-    // YOUR CODE HERE
-    return _size;
+  public int size() { return _size; }
+
+  public String remove( int index ){
+      LLNode  tmp1 = _head;
+      LLNode tmp2 = _head;
+      String oldval = get(index);
+
+      if(index < _size && index > 0){                          //When index is in the middle
+          for( int i=0; i < index - 1; i++ ){
+            tmp1 = tmp1.getNext();
+          }
+
+          for( int i=0; i < index + 1; i++ ){
+            tmp2 = tmp2.getNext();
+          }
+          tmp1.setNext(tmp2);
+          _size--;
+          return oldval;
+      }else if (index == _size - 1 ) {             //when index is the end
+          for( int i=0; i < index -1; i++ ){
+            tmp1 = tmp1.getNext();
+          }
+          tmp1.setNext(null);
+          _size--;
+          return oldval;
+      }else{                                    // When index is first
+          _head = _head.getNext();
+          _size--;
+          return oldval;
+      }
   }
 
-  //--------------^  List interface methods  ^--------------
+  public void add( int index, String newVal ) {
+    LLNode tmp1 = _head;
+    LLNode tmp2 = _head;
 
+      if(index == 0){                               //add at beginning
+          add(newVal);
+
+      }
+      else if(index == _size ){               // add at end
+
+        for( int i=0; i < index - 1; i++ ){
+          tmp1 = tmp1.getNext();
+        }
+          tmp2 = new LLNode(newVal, null);
+          tmp1.setNext(tmp2);
+          _size++;
+
+      }else{                                            // add at middle
+
+        for( int i=0; i < index - 1; i++ ){
+          tmp1 = tmp1.getNext();
+        }
+
+        for( int i=0; i < index ; i++ ){
+          tmp2 = tmp2.getNext();
+        }
+        tmp1.setNext(new LLNode(newVal, tmp2));
+        _size++;
+
+      }
+
+  }
+
+
+
+  //--------------^  List interface methods  ^--------------
 
 
   // override inherited toString
   public String toString()
   {
-    // YOUR CODE HERE
-    String retStr = "";
-    //LLNode temp = _head;
-    for(int i = 0; i < _size; i++){
-      retStr += get(i) + ", ";
-      //temp = temp.getNext();
+    String retStr = "HEAD->";
+    LLNode tmp = _head; //init tr
+    while( tmp != null ) {
+	    retStr += tmp.getCargo() + "->";
+	    tmp = tmp.getNext();
     }
-    if (_size > 0) {
-      retStr = retStr.substring(0,retStr.length()-2);
-    }
+    retStr += "NULL";
     return retStr;
-
   }
+
 
   //main method for testing
   public static void main( String[] args )
   {
-
     LList james = new LList();
-    System.out.println( james );
 
+    System.out.println( james );
     System.out.println( "size: " + james.size() );
+
     james.add("beat");
     System.out.println( james );
     System.out.println( "size: " + james.size() );
+
     james.add("a");
     System.out.println( james );
     System.out.println( "size: " + james.size() );
+
     james.add("need");
     System.out.println( james );
     System.out.println( "size: " + james.size() );
+
     james.add("I");
     System.out.println( james );
     System.out.println( "size: " + james.size() );
+
     System.out.println( "2nd item is: " + james.get(1) );
+
     james.set( 1, "got" );
     System.out.println( "...and now 2nd item is: " + james.set(1,"got") );
-    System.out.println( james );
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
+
+// -------------------------new tests-----------------------------------------------
+
+    System.out.println();
+    james.add( 1, "index 1" );
+    System.out.println( "Added at index 1?: "  );
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
+
+    System.out.println();
+    james.add( 0, "index 0" );
+    System.out.println( "Added at index 0?: "  );
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
+
+
+
+    System.out.println();
+    james.add (6, "at end" );
+    System.out.println( "Added at index size?: "  );
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
+
+
+    System.out.println();
+    james.add (6, "at second to last" );
+    System.out.println( "Added at index size - 1?: "  );
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
+
+//--------------------------------test remove
+
+
+    System.out.println();
+    james.remove( 0 );
+    System.out.println( "remove at 0?: "  );
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
+
+    System.out.println();
+    james.remove( 1 );
+    System.out.println( "remove at 1: "  );
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
+
+    System.out.println();
+    james.remove (5 );
+    System.out.println( "remove last: "  );
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
+
+
+
+
   }
+
+
 
 }//end class LList
