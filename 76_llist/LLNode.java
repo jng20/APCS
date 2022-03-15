@@ -1,9 +1,10 @@
 /*
 Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauce)
 APCS pd6
-HW75: Nodal Recall
-2022-03-11
+HW76: We Got a Little Ol' Convoy
+2022-03-14
 time spent: 0.75 hours
+KtS consumed: 3
 */
 
 /***
@@ -59,14 +60,7 @@ public class LLNode
   // override inherited toString
   public String toString()
   {
-    String retStr = "";
-    LLNode temp = this;
-    while (temp != null) {
-      retStr += temp.getCargo() + ", ";
-      temp = temp.getNext();
-    }
-    retStr = retStr.substring(0,retStr.length()-2);
-    return retStr;
+    return this.getCargo();
   }
 
 

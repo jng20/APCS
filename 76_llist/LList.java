@@ -4,6 +4,7 @@ APCS pd6
 HW76: We Got a Little Ol' Convoy
 2022-03-14
 time spent: 1 hours
+KtS consumed: 3
 */
 
 /*
@@ -28,7 +29,7 @@ public class LList implements List //interface def must be in this dir
   {
     // YOUR CODE HERE
     _head = new LLNode ("", null);           //what do we do for head? Is an empty node possible?
-    _size = 1;
+    _size = 0;
   }
 
 
@@ -37,6 +38,7 @@ public class LList implements List //interface def must be in this dir
   public boolean add( String newVal )
   {
     // YOUR CODE HERE
+    if (_size == 0) { _head.setCargo(newVal); }
     LLNode temp = _head;
     while( temp.getNext() != null ) {       //use .getnext so that temp equals the last node not null
     temp = temp.getNext();
@@ -44,8 +46,6 @@ public class LList implements List //interface def must be in this dir
     temp.setNext(new LLNode(newVal, null));
     _size ++;
     return true;
-
-
   }
 
 
@@ -56,7 +56,7 @@ public class LList implements List //interface def must be in this dir
 
     // YOUR CODE HERE
     LLNode temp = _head;
-    for(int i = 0; i < _size - index - 1; i++){
+    for(int i = 0; i < _size - index; i++){
       temp = temp.getNext();
       //System.out.println(temp);
     }
@@ -72,7 +72,7 @@ public class LList implements List //interface def must be in this dir
 
     // YOUR CODE HERE
     LLNode temp = _head;
-    for(int i = 0; i < _size - index - 1; i++){
+    for(int i = 0; i < _size - index ; i++){
       temp = temp.getNext();
     }
       return temp.setCargo(newVal);
@@ -100,7 +100,9 @@ public class LList implements List //interface def must be in this dir
       retStr += get(i) + ", ";
       //temp = temp.getNext();
     }
-    retStr = retStr.substring(0,retStr.length()-2);
+    if (_size > 0) {
+      retStr = retStr.substring(0,retStr.length()-2);
+    }
     return retStr;
 
   }
