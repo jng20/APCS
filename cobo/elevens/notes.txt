@@ -3,7 +3,7 @@ Team Pink Lemonade: Ariella Katz, Emily Ortiz, Jacob Ng
 APCS pd6
 L07: But These Go Up To Eleven
 2022-03-18
-time spent: many hrs
+time spent: 6.0 hrs
 
 DISCO
  List is an interface, but you're still allowed to say List ___ = new ArrayList() (see question below)
@@ -12,7 +12,10 @@ We learned how to play the card game elevens.
 
 QCC
 Is ArrayList different than List?
-
+What we think abstract classes are:
+- Classes with abstract methods in them
+- Similar to interfaces, but you can implement some methods and leave some abstract
+- If you don't implement abstract methods in subclasses, it won't cause any problems
 */
 
 Activity 2:
@@ -123,4 +126,4 @@ interfaces only contain abstract methods and ElevensBoard would have to
 implement all of them, while the abstract Board can contain pre-implemented
 methods for all of its subclasses to use.
 
-Activity 10: 
+Activity 10:
