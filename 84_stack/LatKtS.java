@@ -3,8 +3,12 @@ Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauc
 APCS pd6
 HW84: Stack: What is it good for?
 2022-03-29
-time spent: __ hours
+time spent: too many hours
 
+QCC
+Is it possible that a linked list would be better for this ?
+String work sucks.
+had to add the last character to retStr outside for loop since for loop only goes to s.length() - 1
 */
 
 
@@ -55,8 +59,6 @@ public class LatKtS
 
     */
     boolean finalMatch = false;
-    String open = "{([";
-    String closed = "})]";
     String parenthesis = "()";
     String bracket = "[]";
     String brace = "{}";
