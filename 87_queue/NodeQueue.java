@@ -1,7 +1,7 @@
 /*
 Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauce)
 APCS pd6
-HW86: What a Racket
+HW87: The English Do Not Wait In Line for Soup
 2022-04-01
 time spent: too many hours
 */
@@ -15,7 +15,7 @@ QCC:
 was the problem
 2. This took too long.
 3. Writing test cases is quite annoying
-4.Our code is expected to produce an error at the end because we run peek front on an empty queue 
+4.Our code is expected to produce an error at the end because we run peek front on an empty queue
 */
 
 public class NodeQueue<QUASAR> implements Queue<QUASAR> {
