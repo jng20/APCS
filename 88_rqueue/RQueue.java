@@ -3,7 +3,14 @@ Team Pink Lemonade (Ariella Katz, Jacob Ng, Emily Ortiz, Tom, Preguac, Applesauc
 APCS pd6
 HW88: BPC Kiddies Do Not Wait in Line Either
 2022-04-04
-time spent: 1.0 hours
+time spent: 2.5 hours
+*/
+
+/*
+QCC
+Would it have been possible to make a temporary Queue?
+
+DISCO
 */
 
 /***
@@ -50,7 +57,7 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
       _end = _end.getNext();
     }
     _size++;
-    //System.out.println("enqueued " + enQVal);
+    System.out.println("enqueued " + enQVal);
 
   }//O(1) no iteration needed
 
@@ -59,10 +66,9 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
   // assume _queue ! empty
   public SWASHBUCKLE dequeue()
   {
-      sample();
-      sample();
-      sample();
-      sample();                    //shuffle first then dequeue
+    for(int i = ((int)(Math.random() * 10)); i >=0 ; i--){
+          sample();
+    }
       SWASHBUCKLE retVal = _front.getCargo();
       _front = _front.getNext();
 
@@ -90,13 +96,21 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
    It'd be nice if we could create a temporary queue. CAN WE MAKE A TEMPORARY QUEUE?
    ORRRRRR
    Create 2 temp link list. send all even index nodes to one temp list. send all odd index nodes to the other temp list
+   combine both temp lists. Have _front point to front of this combination. Have _end point to end of combination.
+   Similar to perfect shuffle
+
+   Create 2 temporary LLists.
+   Alternate between lists, and send first element from the queue to one of the temp LL until the queue is isEmpty
+   now randomly link the first to the second list or the second to first list for extra randomness.
+   Set _front to this new combined list and _end to the end of this list
+
    **/
   public void sample ()
   {
       //RQueue<SWASHBUCKLE> temp = new RQueue<SWASHBUCKLE>();
-      LLNode<SWASHBUCKLE> tmp;
-      LLNode<SWASHBUCKLE> tmp2;
-      int half = _size / 2;
+      LLNode<SWASHBUCKLE> tmp, tmpE;
+      LLNode<SWASHBUCKLE> tmp2, tmp2E;
+    //  int half = _size / 2;
       if(_size == 1){
         return;       //can't shuffle 1 element
       }else if(_size == 2){
@@ -106,13 +120,54 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
         _front = tmp;
         _end = _front.getNext();
       }else{
-          // LLNode<SWASHBUCKLE> tmp = new LLNode<SWASHBUCKLE>(  _front.getCargo(), null );
-          // LLNode<SWASHBUCKLE> tmp2 = new LLNode<SWASHBUCKLE>(  _front.getNext().getCargo(), null );
+      //  System.out.println(_front);
+           tmp = new LLNode<SWASHBUCKLE>(  _front.getCargo(), null );
+           _front=_front.getNext();
+      //  System.out.println(_front);
 
+           tmp2 = new LLNode<SWASHBUCKLE>(  _front.getCargo(), null );
+           _front=_front.getNext();
+      //  System.out.println(_front);
+
+           tmpE = tmp;
+           tmp2E = tmp2;
+          for(int i = 3; i<=_size; i++){
+              if(i % 2 == 1 ){
+                  // tmpE.setNext(_front.getCargo());
+                  // tmpE = tmpE.getNext();
+                  // _front=_front.getNext();
+                  tmpE.setNext(new LLNode<SWASHBUCKLE> (_front.getCargo(), null));
+                  tmpE = tmpE.getNext();
+                  _front=_front.getNext();
+                //  System.out.println("tmpE: " + tmpE);
+                //  System.out.println(_front);
+
+              }else{
+                  // tmp2E.setNext(_front.getCargo());
+                  // tmp2E = tmp2E.getNext();
+                  // _front=_front.getNext();
+                  tmp2E.setNext(new LLNode<SWASHBUCKLE> (_front.getCargo(), null));
+                  tmp2E = tmp2E.getNext();
+                  _front=_front.getNext();
+                  //System.out.println("tmp2E: " + tmp2E);
+                  //System.out.println(_front);
+
+              }
+          }
+          int i = ((int)(Math.random() * 2));
+          if(i == 0){
+              tmpE.setNext(tmp2);
+              _front = tmp;
+              _end = tmp2E;
+          }else{
+              tmp2E.setNext(tmp);
+              _front = tmp2;
+              _end = tmpE;
+          }
       }
-      
 
-  }//O(?)
+
+  }//O(n) Only 1 iteration
 
 
   public boolean isEmpty()
@@ -140,7 +195,6 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
   public static void main( String[] args )
   {
 
-      /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
 
     Queue<String> PirateQueue = new RQueue<String>();
 
@@ -166,6 +220,7 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
     System.out.println("\nnow dequeuing fr empty queue...\n" +
                        "(expect NPE)\n");
     System.out.println( PirateQueue.dequeue() );
+    /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
 
       ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
 
