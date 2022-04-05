@@ -9,7 +9,6 @@ time spent: 2.5 hours
 /*
 QCC
 Would it have been possible to make a temporary Queue?
-
 DISCO
 */
 
@@ -90,7 +89,7 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
 
   /***
    * void sample() -- a means of "shuffling" the queue
-   * Algo:
+   * Algo1:
    *   < YOUR SUCCINCT SUMMARY HERE >
    Pick random node from list and start new list. Remove from old list. keep going until old list is empty.
    It'd be nice if we could create a temporary queue. CAN WE MAKE A TEMPORARY QUEUE?
@@ -98,15 +97,16 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
    Create 2 temp link list. send all even index nodes to one temp list. send all odd index nodes to the other temp list
    combine both temp lists. Have _front point to front of this combination. Have _end point to end of combination.
    Similar to perfect shuffle
-
    Create 2 temporary LLists.
    Alternate between lists, and send first element from the queue to one of the temp LL until the queue is isEmpty
    now randomly link the first to the second list or the second to first list for extra randomness.
    Set _front to this new combined list and _end to the end of this list
-
+   * Algo2:
+   for each node in the queue, swap it with a random node in the queue.
    **/
   public void sample ()
   {
+    /*
       //RQueue<SWASHBUCKLE> temp = new RQueue<SWASHBUCKLE>();
       LLNode<SWASHBUCKLE> tmp, tmpE;
       LLNode<SWASHBUCKLE> tmp2, tmp2E;
@@ -165,8 +165,62 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
               _end = tmpE;
           }
       }
+    */
+//    /*
+    for (int i = 0; i < _size; i++) {
+      System.out.println(toString());
+      System.out.println("i: " + i);
+      int rand = (int)(Math.random() * (_size-1));
+      System.out.println("rand: " + rand);
 
-
+      //iterate through to the node at index i
+      LLNode<SWASHBUCKLE> temp1 = _front;
+      for (int n = 0; n < i-1; n++) {
+        temp1 = temp1.getNext();
+      }
+      LLNode<SWASHBUCKLE> temp2;
+      if (i == 0) {
+        temp2 = _front;
+      }
+      else {
+        temp2 = temp1.getNext();
+      }
+      //iterate through to the node at index rand
+      LLNode<SWASHBUCKLE> temp3 = _front;
+      for (int m = 0; m < rand-1; m++) {
+        temp3 = temp3.getNext();
+      }
+      LLNode<SWASHBUCKLE> temp4;
+      if (rand == 0) {
+        temp4 = _front;
+      }
+      else {
+        temp4 = temp3.getNext();
+      }
+      System.out.println(temp1);
+      System.out.println(temp2);
+      System.out.println(temp3);
+      System.out.println(temp4);
+      //swap temp2 and temp4
+      LLNode<SWASHBUCKLE> temp5 = temp4.getNext();
+      if (!(temp2.equals(temp4))) {
+        temp4.setNext(temp2.getNext());
+        if (temp2.equals(_front)) {
+          _front = temp4;
+        }
+        else {
+          temp1.setNext(temp4);
+        }
+        temp2.setNext(temp5);
+        if (temp5 == (null)) {
+          _end = temp2;
+        }
+        temp3.setNext(temp2);
+        System.out.println("front: " + _front);
+        System.out.println("end: " + _end);
+      }
+    }
+//    */
   }//O(n) Only 1 iteration
 
 
@@ -221,7 +275,6 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
                        "(expect NPE)\n");
     System.out.println( PirateQueue.dequeue() );
     /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
-
       ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
 
   }//end main
