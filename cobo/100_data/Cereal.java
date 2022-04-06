@@ -1,10 +1,3 @@
-/*
-Team OutOfBreath: Brian Wang, Brian Kang, Jacog Ng, Andrew Piatetsky
-APCS
-LAB100 -- COBO
-2022-04-05
-time spent: _ hrs
-*/
 public class Cereal{
   private String name;
   private String type;
@@ -57,7 +50,7 @@ int shel,
 double weigh,
   int cup,
   double ratin){
-
+    
     name = nam;
     type = typ;
     cal = ca;
