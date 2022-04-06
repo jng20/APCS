@@ -35,5 +35,8 @@ public class WeatherStation {
    public boolean isLocatedInCord(double lat, double lng){
      return this.lat == lat && this.lng == lng;
    }
+   public String getLat() {
+      return "" + lat;
+   }
 
 }
