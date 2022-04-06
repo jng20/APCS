@@ -35,3 +35,18 @@ https://berry-cs.github.io/sinbad/install-java
 4. 15
 5. String, String, Integer, Integer, ... Double, Integer, Double
 6. Cereal.java
+7. Done enough?
+8. What shelf is most of the cereal located on?
+9. What is the type of the cereal in the 3rd row?
+10. Make a method to return the mode of the array of the shelves.
+
+1. New York Downtown Manhattan (48 degrees F)
+2. KJRB
+   Basic info about weather
+4. 48 just in NY
+5. By coordinates
+6. Unable to connect with core.data library
+7. Can you find weather stations on weather info?
+8. A few more methods to check each parameter, if possible
+
+1. 
