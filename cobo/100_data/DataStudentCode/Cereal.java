@@ -15,7 +15,7 @@ public class Cereal{
   private int cups;
   private double rating;
 
-  public cereal(){
+  public Cereal(){
     //I am not putting everything into the params
     name = "";
     type = "";
@@ -32,6 +32,40 @@ public class Cereal{
     weight = 0.0;
     cups = 0;
     rating = 0.0;
+
+  }
+
+  public Cereal(String nam,
+   String typ,
+  int ca,
+   int pro,
+  int fa,
+  int sodiu,
+  int fibe,
+  int car,
+ int suga,
+  int pota,
+  int vit,
+int shel,
+double weigh,
+  int cup,
+  double ratin){
+    
+    name = nam;
+    type = typ;
+    cal = ca;
+    prot = pro;
+    fat = fa;
+    sodium = sodiu;
+    fiber = fibe;
+    carb = car;
+    sugar = suga;
+    potas = pota;
+    vita = vit;
+    shelf = shel;
+    weight = weigh;
+    cups = cup;
+    rating = ratin;
 
   }
 
@@ -85,7 +119,21 @@ public class Cereal{
   }
   public String toString(){
     String ret = "";
-    //ret = "name = " + name + '\ntype = ' + type + '\ncal = ' + cal + '\nprot = ' + prot + '\nfat = '+ fat +'\nsodium = '+ sodium +'\nfiber = '+ fiber +'\ncarb = '+ carb +'\nsugar = '+ sugar +'\npotas = '  + potas+'\nvita = '+ vita+'\nshelf =' + shelf+'\nweight =' + weight+'\ncups =' + cups+'\nrating = '+ rating;
+    ret += "name = " + name;
+    ret += " type = " + type;
+    ret += " cal = " + cal;
+    ret += " prot = " + prot;
+    ret += " fat = " + fat;
+    ret += " sodium = " + sodium;
+    ret += " fiber = " + fiber;
+    ret += " carb = " + carb;
+    ret += " sugar = " + sugar;
+    ret += " potas = " + potas;
+    ret += " vita = " + vita;
+    ret += " shelf = " + shelf;
+    ret += " weight = " + weight;
+    ret += " cups = " + cups;
+    ret += " rating = " + rating;
     return ret;
 
 
@@ -97,6 +145,6 @@ public class Cereal{
     System.out.println(please.sugar());
     System.out.println(please.sodium());
     System.out.println(please.rating());
-    System.out.println(cereal);
+    System.out.println(please);
   }
 }
