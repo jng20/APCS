@@ -1,4 +1,11 @@
 /*
+Team OutOfBreath: Brian Wang, Brian Kang, Jacog Ng, Andrew Piatetsky
+APCS
+LAB100 -- COBO
+2022-04-05
+time spent: _ hrs
+*/
+/*
  Represents information about a NWS weather station
 */
 
@@ -34,6 +41,9 @@ public class WeatherStation {
 
    public boolean isLocatedInCord(double lat, double lng){
      return this.lat == lat && this.lng == lng;
+   }
+   public String getLat() {
+      return "" + lat;
    }
 
 }

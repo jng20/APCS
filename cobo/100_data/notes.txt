@@ -6,14 +6,24 @@ time spent: _ hrs
 
 
 DISCO
-
+javac -classpath .:../sinbad.jar -d . Welcome01.java
+java -classpath .:../sinbad.jar Welcome01
+to translate to english, the first command (assuming we're in the DataStudentCode directory)
+go back 1 level, use sinbad.jar?  compile Welcome01 in the directory currently in?
+the second command runs the compiled file.
 
 QCC
-
+why does college board make terrible labs?
+Piazza is really helpful.
+How were we supposed to get the csv file for activity 4?
+How do we know what the categories of the downloaded csv file would have been to run fetch?
+This was not fun.
 
 <TNPG>'s CSV FLOW:
 <insert your description of your tools and workflow in creating, editing CSV files>
+A lot of the code was given to us. We just had to copy paste it with a different key.
 
 
 TRUBZ
 <this lab involves using tools that are likely to introduce hiccups; log any troubleshooting issues here>
+We had trouble with the sinbad.jar stuff but piazza was really helpful.

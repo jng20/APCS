@@ -15,6 +15,13 @@ $ java -classpath.:sinbad.jar Driver
 411 on sinbad
 https://berry-cs.github.io/sinbad/install-java
 
+Team OutOfBreath: Brian Wang, Brian Kang, Jacog Ng, Andrew Piatetsky
+APCS
+LAB100 -- COBO
+2022-04-05
+time spent: _ hrs
+
+
 1. Youtube, Facebook
 2. Useful ads, browser info, machine info, preferences
 3. Delimited means having boundaries
@@ -43,10 +50,22 @@ https://berry-cs.github.io/sinbad/install-java
 1. New York Downtown Manhattan (49 degrees F)
 2. PADK
    Basic info about weather
-4. 48 just in NY
-5. By coordinates
-6. Unable to connect with core.data library
-7. Can you find weather stations on weather info?
-8. A few more methods to check each parameter, if possible
+   The temperature at Adak Island, Adak Airport, AK is 29.0F
+3. KATL: 71.0 degrees; Light Drizzle Fog/Mist (wind: 210 degrees)
+KSAV: 84.0 degrees; Mostly Cloudy (wind: 220 degrees)
+PADK: 29.0 degrees; Light Snow Fog/Mist (wind: 0 degrees)
+Colder at PADK
 
-1.
+4. 2876 in NY
+5. By coordinates
+6. 44.93583 : Massena, Massena International-Richards Field
+7. Can you find weather stations on weather info?
+What is the nothernmost station in your state?
+What is the Westernmost station in you state?
+Easternmost?
+
+8. A few more methods to check each parameter, if possible
+2 to be exact
+
+1.Who was the highest paid player in the nba ever?
+2.https://www.kaggle.com/datasets/wyattowalsh/basketball/code
