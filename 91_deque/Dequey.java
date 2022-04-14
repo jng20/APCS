@@ -2,9 +2,10 @@
 // APCS Pd 6
 // HW91: Deque the Halls
 // 2022-04-13
-// Time Spent: 0.5 hrs
+// Time Spent: 1.0 hrs
 
 import java.util.LinkedList;
+import java.util.Iterator;
 
 public class Dequey<D> implements Deque<D>{
   LinkedList<D> _Deque;
@@ -61,49 +62,60 @@ public class Dequey<D> implements Deque<D>{
       return _Deque.offerLast(val);
   }
 
+  public boolean add(D val){
+    return _Deque.add(val);
+  }
 
-  public boolean add(D e){
-    return _Deque.offerLast(val)
+  public boolean offer(D val){
+    return _Deque.offer(val);
   }
-  public boolean offer(D e){
-    return _Deque.offerLast(val)
-  }
+
   public D remove(){
-    return _Deque.offerLast(val)
-  }
-  public D poll(){
-    return _Deque.offerLast(val)
-  }
-  public D element(){
-    return _Deque.offerLast(val)
-  }
-  public D peek(){
-    return _Deque.offerLast(val)
-  }
-  public boolean contains(D e){
-    return _Deque.offerLast(val)
-  }
-  public int size(){
-    return _Deque.offerLast(val)
-  }
-  public Iterator<D> iterator(){
-    return _Deque.offerLast(val)
+    return _Deque.remove();
   }
 
-  public boolean removeFirstOccurrence(D e){
-    return _Deque.offerLast(val)
+  public D poll(){
+    return _Deque.poll();
   }
-  public boolean removeLastOccurrence(D o){
-    return _Deque.offerLast(val)
+
+  public D element(){
+    return _Deque.element();
   }
-  public void push(D e){
-    return _Deque.offerLast(val)
+
+  public D peek(){
+    return _Deque.peek();
   }
+
+  public boolean contains(D val){
+    return _Deque.contains(val);
+  }
+
+  public int size(){
+    return _Deque.size();
+  }
+
+  public Iterator<D> iterator(){
+    return _Deque.iterator();
+  }
+
+  public boolean removeFirstOccurrence(D val){
+    return _Deque.removeFirstOccurrence(val);
+  }
+
+  public boolean removeLastOccurrence(D val){
+    return _Deque.removeLastOccurrence(val);
+  }
+
+  public void push(D val){
+    _Deque.push(val);
+  }
+
   public D pop(){
-    return _Deque.offerLast(val)
+    return _Deque.pop();
   }
+
   public Iterator<D> descendingIterator(){
-    return _Deque.offerLast(val)
+    return _Deque.descendingIterator();
   }
 
   public String toString()
@@ -117,21 +129,4 @@ public class Dequey<D> implements Deque<D>{
     return retStr;
   }//end toString()
 
-  public static void main(String[] args){
-      Dequey<String> Bob = new Dequey<String>();
-      System.out.println(Bob);
-      Bob.addLast("you");
-      System.out.println(Bob);
-      Bob.addLast("are");
-      System.out.println(Bob);
-      Bob.addLast("smart.");
-      System.out.println(Bob);
-      Bob.addFirst("no,");
-      System.out.println(Bob);
-      System.out.println("Should print : no, you are smart.");
-
-      Bob.removeFirst();
-      System.out.println(Bob);
-      System.out.println("Should print : you are smart.");
-  } // end main
 } // end class
