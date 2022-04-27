@@ -3,6 +3,13 @@
  * @author cody.henrichsen
  * @version 1.4 17/09/2018
  */
+ /*
+ Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
+ APCS
+ L09: Some Folks Call It A Charades
+ 2022-04-26
+ time spent: _ hrs
+ */
 public class Celebrity
 {
 	/**

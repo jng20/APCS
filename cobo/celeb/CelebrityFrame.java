@@ -2,7 +2,13 @@ import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+/*
+Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
+APCS
+L09: Some Folks Call It A Charades
+2022-04-26
+time spent: _ hrs
+*/
 /**
  * GUI Frame class for the Celebrity Game
  * @author cody.henrichsen

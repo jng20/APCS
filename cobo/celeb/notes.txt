@@ -1,1 +1,13 @@
-a
+/*
+Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
+APCS
+L09: Some Folks Call It A Charades
+2022-04-26
+time spent: _ hrs
+*/
+
+QCC
+- How to use swingset?
+- How to play the game in the terminal?
+- Difference between preparegame() and celebrityGame() constructor?
+- when will we have to call setclue/setanswer in celebrity if it's all done in the overloaded constructor?
