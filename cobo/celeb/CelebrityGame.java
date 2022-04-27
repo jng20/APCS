@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import javax.swing.*;
 /*
 Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
 APCS
@@ -34,8 +35,11 @@ public class CelebrityGame
 	 */
 	public CelebrityGame()
 	{
-		celebGameList = new ArrayList<Celebrity>();
-		gameWindow = new CelebrityFrame(this);
+		// celebGameList = new ArrayList<Celebrity>();
+	  gameWindow = new CelebrityFrame(this);
+		this.prepareGame();
+		this.addCelebrity("john cena", "u cant see him", "actor/wrestler");
+		this.play();
 	}
 
 	/**
@@ -58,13 +62,13 @@ public class CelebrityGame
 	public boolean processGuess(String guess)
 	{
 		boolean ret = false;
-		ret = guess.trim().equalsIgnorCase( gameCelebrity.getAnswer );
+		ret = guess.trim().equalsIgnoreCase( gameCelebrity.getAnswer() );
 		if (ret == true && getCelebrityGameSize() > 0){
 				celebGameList.remove(0);
 				this.gameCelebrity = celebGameList.get(0);
 				return ret;
 		}else if (getCelebrityGameSize() <= 0){
-				this.gameCelebrity = new celebrity("","","");
+				this.gameCelebrity = new Celebrity("","","");
 				return ret;
 		}else{
 			return ret;

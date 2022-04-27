@@ -10,6 +10,7 @@
  2022-04-26
  time spent: _ hrs
  */
+ import javax.swing.*;
 public class CelebrityRunner
 {
 	/**
@@ -18,9 +19,10 @@ public class CelebrityRunner
 	 */
 	public static void main(String [] args)
 	{
-		CelebrityGame game = new CelebrityGame();
-		game.prepareGame();
-		game.addCelebrity("john cena", "u cant see him", "actor/wrestler");
-		game.play();
+		// CelebrityGame game = new CelebrityGame();
+		// game.prepareGame();
+		// game.addCelebrity("john cena", "u cant see him", "actor/wrestler");
+		// game.play();
+		CelebrityGame foo = new CelebrityGame();
 	}
 }
