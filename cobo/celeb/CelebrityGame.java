@@ -102,10 +102,28 @@ public class CelebrityGame
 	 * @param type
 	 *            What type of celebrity
 	 */
+
+
 	public void addCelebrity(String name, String guess, String type)
 	{
 		if (validateCelebrity(name) && validateClue(guess, type)){
-			Celebrity newCeleb = new Celebrity(name, guess, type);
+			// Celebrity newCeleb = new Celebrity(name, guess, type);
+			// celebGameList.add(newCeleb);
+			if(type.trim().equalsIgnoreCase("Literature")){
+				Celebrity	newCelebrity = new LiteratureCelebrity(name, guess);
+				this.celebGameList.add(newCelebrity);
+			}
+			if(type.trim().equalsIgnoreCase("Basketball")){
+				Celebrity	newCelebrity = new BasketballCelebrity(name, guess);
+				this.celebGameList.add(newCelebrity);
+			}
+		}
+	}
+
+	public void addCelebrity(String name, String guess)//, String type)
+	{
+		if (validateCelebrity(name) && validateClue(guess)){
+			Celebrity newCeleb = new Celebrity(name, guess);
 			celebGameList.add(newCeleb);
 		}
 	}
@@ -129,8 +147,15 @@ public class CelebrityGame
 	 */
 	public boolean validateClue(String clue, String type)
 	{
+		return clue.trim().length() >= 10 && type.trim().length() >= 0;
+	}
+
+	public boolean validateClue(String clue)//, String type)
+	{
 		return clue.trim().length() >= 10;
 	}
+
+
 
 	/**
 	 * Accessor method for the current size of the list of celebrities

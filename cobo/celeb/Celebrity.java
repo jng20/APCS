@@ -33,12 +33,20 @@ public class Celebrity
 	 * @param answer
 	 * @param clue
 	 */
-	public Celebrity(String answer, String clue, String type)
+	public Celebrity(String answer, String clue)//, String type)
+	{
+		celebClue = clue;
+		celebName = answer;
+	//	celebType = type;
+	}
+
+  public Celebrity(String answer, String clue, String type)
 	{
 		celebClue = clue;
 		celebName = answer;
 		celebType = type;
 	}
+
 
 	/**
 	 * Supplies the clue for the celebrity
