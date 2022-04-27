@@ -38,11 +38,12 @@ public class CelebrityGame
 	 */
 	public CelebrityGame()
 	{
-		// celebGameList = new ArrayList<Celebrity>();
+	  celebGameList = new ArrayList<Celebrity>();
 	  gameWindow = new CelebrityFrame(this);
-		this.prepareGame();
-		this.addCelebrity("john cena", "u cant see him", "actor/wrestler");
-		this.play();
+		// this.prepareGame();
+		// this.addCelebrity("john cena", "u cant see him", "actor/wrestler");
+		// this.play();
+
 	}
 
 	/**
