@@ -1,3 +1,4 @@
+package celeb;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.Color;
@@ -11,6 +12,8 @@ L09: Some Folks Call It A Charades
 2022-04-26
 time spent: _ hrs
 */
+
+
 /**
  * CelebrityPanel for the game Celebrity
  *

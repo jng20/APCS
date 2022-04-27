@@ -1,3 +1,4 @@
+package celeb;
 import java.awt.CardLayout;
 
 import javax.swing.JFrame;
@@ -9,6 +10,8 @@ L09: Some Folks Call It A Charades
 2022-04-26
 time spent: _ hrs
 */
+
+
 /**
  * GUI Frame class for the Celebrity Game
  * @author cody.henrichsen

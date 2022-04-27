@@ -1,5 +1,8 @@
+package celeb;
 import java.util.ArrayList;
 import javax.swing.*;
+
+
 /*
 Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
 APCS

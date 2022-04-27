@@ -1,3 +1,4 @@
+package celeb;
 /**
  * Starts the Celebrity Game application
  * @author cody.henrichsen
@@ -11,6 +12,7 @@
  time spent: _ hrs
  */
  import javax.swing.*;
+
 public class CelebrityRunner
 {
 	/**

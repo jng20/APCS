@@ -1,3 +1,4 @@
+package celeb;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,8 @@ L09: Some Folks Call It A Charades
 2022-04-26
 time spent: _ hrs
 */
+
+
 /**
  * The start screen for the CelebrityGame app.
  *
