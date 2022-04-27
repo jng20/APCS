@@ -21,11 +21,14 @@ To Do
     * ~~Celebrity game size, process guess~~
     * ~~Send clue~~
 * Subclass literature
-    * Idk
+    * copy the literatureceleb class but do BasketballCelebrity
+    * change all the methods to take a type
 * Gui
     * Start panel
-    * Fix any logic problems still appearing
+
+* Fix any logic problems still appearing
 
 
 #### Experience
-So far it's not that difficult but since we don't know how the gui or swingset works we don't know how to test our logic
+This lab was horrible. The gui stuff was very confusing. We didn't know how to test the logic in the terminal either.
+There were so many files and the lab was very poorly ordered.
