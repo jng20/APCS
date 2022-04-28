@@ -112,10 +112,12 @@ public class CelebrityGame
 			if(type.trim().equalsIgnoreCase("Literature")){
 				Celebrity	newCelebrity = new LiteratureCelebrity(name, guess);
 				this.celebGameList.add(newCelebrity);
+				System.out.println("no");
 			}
 			if(type.trim().equalsIgnoreCase("Basketball")){
 				Celebrity	newCelebrity = new BasketballCelebrity(name, guess);
 				this.celebGameList.add(newCelebrity);
+				System.out.println("yes");
 			}
 		}
 	}
@@ -125,6 +127,8 @@ public class CelebrityGame
 		if (validateCelebrity(name) && validateClue(guess)){
 			Celebrity newCeleb = new Celebrity(name, guess);
 			celebGameList.add(newCeleb);
+			System.out.println("hi");
+
 		}
 	}
 

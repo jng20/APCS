@@ -308,6 +308,7 @@ public class StartPanel extends JPanel
     clueField.setText("");
     controller.addCelebrity(answer, clue, type);
     startButton.setEnabled(true);
+    System.out.println("hello");
   }
 
 }
