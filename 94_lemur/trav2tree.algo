@@ -1,0 +1,83 @@
+/*
+Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
+APCS pd6
+HW94 -- reverse engineering
+2022-05-08
+time spent: _ hrs
+*/
+
+DISCO
+------------------------------------------------
+* Tree traversals are kind of fun. kind of.
+================================================
+
+
+QCC
+------------------------------------------------
+* How does onto and 1 to 1 relate to trees? Trees are graphs but not the graphs we normally think of in say, algebra.
+* How are we supposed to come up with an algorithm other than trial and error? I mean after certain trials, you can find clues that can help create a tree to match both
+traversals but I don't know how to verbalize these clues.
+* Will we have to recreate trees based off three traversals?
+================================================
+
+
+HOW KEEN ARE YOUR POWERS OF OBSERVATION?
+------------------------------------------------
+Q: For a given binary tree, how many unique pre-order traversals are there?
+A: 1?
+
+Q: For a given binary tree, how many unique in-order traversals are there?
+A: 1?
+
+Q: For a given binary tree, how many unique post-order traversals are there?
+A: 1?
+
+Q: For a given traversal, how many unique trees could have produced it?
+A: multiple unless a second traversal is given?
+
+Q: Given a pre-order traversal, what can you infer about its tree?
+A: The first node must be the root node.
+
+Q: Given a post-order traversal, what can you infer about its tree?
+A: The last node is the root node
+
+Q: What does "1-to-1" mean?
+A: "no 2 elements of the domain map to the same element in the range". 1 x value corresponds to 1 y value and no x values can have the same y value. Pass the horizontal line test
+
+Q: What does "onto" mean?
+A:A function that maps A to B is considered to be "onto" if every element of B corresponds to at least one element of A.
+This is not the same as one-to-one because in an onto function, multiple elements of A may be mapped to the same element of B. -AK
+
+================================================
+
+
+ALGO for pre post
+------------------------------------------------
+givens: preorder postorder
+
+procedure: Identify the root.
+Pre order is root left subtree right subtree.
+Post Order is left subtree right subtree.
+Draw trees following each traversals rules and see if you can find two trees that match?
+================================================
+
+ALGO for pre in
+------------------------------------------------
+givens: preorder in order
+
+procedure: Identify the root.
+Pre order is root left subtree right subtree.
+in order is left subtree root right subtree
+Draw trees following each traversals rules and see if you can find two trees that match?
+================================================
+
+ALGO for post in
+------------------------------------------------
+givens: post order in order
+
+procedure: Identify the root.
+Post Order is left subtree right subtree.
+in order is left subtree root right subtree
+Draw trees following each traversals rules and see if you can find two trees that match?
+================================================
+(replicate the algo section above as many times as necessary for distinct algos)
