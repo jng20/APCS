@@ -1,3 +1,16 @@
+/*
+Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
+APCS pd6
+HW95 -- Algorithm as Data Structure
+2022-05-09
+time spent: _ hrs
+*/
+
+/*
+QCC: Does the first insert create the root or should the root be a fixed value?
+What to do if the value already exists in tree?
+
+*/
 /**
  * class TreeNode
  * SKELETON
