@@ -3,11 +3,15 @@ Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
 APCS pd6
 HW97: Prune Your Tree
 2022-05-11
-time spent: _ hrs
+time spent: TOO MANY HOURS 
 */
 
 /*
 Disco
+There are 3 cases 0 child 1 child 2 child
+If the node you want to have removed has 2 children and neither child is a leaf, you can just take the right child and attach it to the right most leaf of the left child.
+(not sure if this is cheating or not)
+When removing the root of the entire tree, you gotta reset the root.
 
 QCC:
 Does the first insert create the root or should the root be a fixed value?
@@ -15,6 +19,18 @@ What to do if the value already exists in tree?
 Let the computer do the work. Just like knights tour.
 
 In our height method we have to do minus 1 at the end because we initialize our tree with 0.
+
+
+Algo for remove
+-if target has 0 child
+  - chop off ties to child
+-if target has 1 child
+  - have the parent of the target link up with its grandchild instead of its child(target)
+-if target has 2 children
+  - If the node you want to have removed has 2 children and neither child is a leaf, you can just take the right child and attach it to the right most leaf of the left child.
+  - if one child is a leaf then have the leaf link to the other child
+
+Didn't feel like recursion. Did we do something wrong?
 
 */
 

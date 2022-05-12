@@ -251,18 +251,23 @@ public class BST
   }
   TreeNode searchParent( int target, TreeNode currNode )
   {
-    if ( currNode.getLeft().getValue()==target || currNode.getRight().getValue()== target)
+    if(currNode.getValue() == target)
+        return null;
+    else if ( currNode.getLeft().getValue()==target || currNode.getRight().getValue()== target)
       return currNode;
-    else
+    else if ( target < currNode.getValue() )
       return searchParent( target, currNode.getLeft() );
+    else if ( target > currNode.getValue() )
       return searchParent( target, currNode.getRight() );
+    else
       return null; //to get past compiler
+
+       //to get past compiler
   }
 
-  static boolean isLeaf( TreeNode ask){
-      return (ask.getLeft() == null && ask.getRight() == null);
-  }
-
+  // static boolean isLeaf( TreeNode ask){
+  //     return (ask.getLeft() == null && ask.getRight() == null);
+  // }
 
 
   /**
@@ -272,54 +277,129 @@ public class BST
   TreeNode remove( int target )
   {
     //Find node to remove
-    TreeNode target = search( target );
+    TreeNode tar = search( target );
     TreeNode parent = searchParent( target );
+    if(tar == null){
+      return null;
+    }
+    if(parent == null){
+      parent = tar;
+    }
+    return remove(tar, parent);
 
   }
   TreeNode remove( TreeNode target, TreeNode parent )
   {
-      if(isLeaf(target)){
-        remove0( target, parent);
+
+      if(isLeaf(target)){                                 //leaf
+        return remove0( target, parent);
       }
+
+      //1 child
       else if(target.getLeft() != null && target.getRight() == null){
-        remove1(target, parent);
+        return remove1(target, parent);
       }
       else if(target.getLeft() == null && target.getRight() != null){
-        remove1(target, parent);
-      }   
+        return remove1(target, parent);
+      }
 
-
+      //2 child
+      else if(target.getLeft() != null && target.getRight() != null){
+        return remove2(target, parent);
+      }
+      return null;
 
   }
 
   TreeNode remove0( TreeNode target, TreeNode parent ){                     //If target is a leaf, remove it      target.getLeft() == null && target.getRight() == null
+        if(parent == target){
+            target = null;
+            _root = target;
+            return target;
+        }
         if(parent.getLeft() == target){
             parent.setLeft(null);
         }else{
             parent.setRight(null);
         }
-        return parent;
+        return target;                                            //return removed node
   }
   TreeNode remove1( TreeNode target, TreeNode parent ){
-    if (target == parent.getLeft()){                      //target is left child of parent
-            if(target.getLeft() != null && target.getRight() == null){       // target only has leftchild
-                parent.setLeft(target.getLeft());
+        if (parent == target){
+            if(target.getLeft() != null) {
+              //System.out.println("here");
+              target = target.getLeft();
+              parent = target;
+              _root = target;
+              //System.out.println("here");
+              //System.out.println(target);
             }else{
-                parent.setLeft(target.getRight());
+              target = target.getRight();
+              parent = target;
+              _root = target;
+              //System.out.println("here2");
             }
-            return parent;
+            return target;
+        }
+        if (target == parent.getLeft()){                      //target is left child of parent
+                if(target.getLeft() != null && target.getRight() == null){       // target only has leftchild
+                    parent.setLeft(target.getLeft());
+                }else{
+                    parent.setLeft(target.getRight());
+                }
+                return target;
+        }
+        else if (target == parent.getRight()){                      //target is right child of parent
+                if(target.getLeft() == null && target.getRight() != null){       // target only has rightchild
+                    parent.setRight(target.getRight());
+                }else{
+                    parent.setRight(target.getLeft());
+                }
+                return target;
+        }
+        return target;
+  }
+  TreeNode remove2( TreeNode target, TreeNode parent ){       //
+    if (parent == target){
+      TreeNode temp = target.getLeft();
+      if(isLeaf(target.getLeft()) == true ){
+          target.getLeft().setRight(target.getRight());
+      }else{
+          while(!isLeaf(temp)){
+              temp = temp.getRight();
+          }
+          temp.setRight(target.getRight());
+      }
+      _root= target.getLeft();
     }
-    else if (target == parent.getRight()){                      //target is right child of parent
-            if(target.getLeft() == null && target.getRight() != null){       // target only has rightchild
-                parent.setRight(target.getRight());
-            }else{
-                parent.setRight(target.getLeft());
+    else if (target == parent.getLeft()){
+        TreeNode temp = target.getLeft();
+        if(isLeaf(target.getLeft()) == true ){
+            target.getLeft().setRight(target.getRight());
+        }else{
+            while(!isLeaf(temp)){
+                temp = temp.getRight();
             }
-            return parent;
+            temp.setRight(target.getRight());
+        }
+        parent.setLeft(target.getLeft());
+
+    }else if (target == parent.getRight()){
+        TreeNode temp = target.getLeft();
+        if(isLeaf(target.getLeft()) == true ){
+            target.getLeft().setRight(target.getRight());
+        }else{
+            while(!isLeaf(temp)){
+                temp = temp.getRight();
+            }
+            temp.setRight(target.getRight());
+
+        }
+        parent.setRight(target.getRight());
     }
+    return target;
 
   }
-  TreeNode remove2( TreeNode target, TreeNode parent )
 
 
 
@@ -334,6 +414,7 @@ public class BST
       System.out.println( "tree init'd: " + arbol );
 
       //inserting in this order will build a perfect tree
+      /*
       arbol.insert( 3 );
       arbol.insert( 1 );
       arbol.insert( 0 );
@@ -341,11 +422,11 @@ public class BST
       arbol.insert( 5 );
       arbol.insert( 4 );
       arbol.insert( 6 );
-      /*
+
       */
 
       //insering in this order will build a linked list to left
-      /*
+
       arbol.insert( 6 );
       arbol.insert( 5 );
       arbol.insert( 3 );
@@ -353,6 +434,7 @@ public class BST
       arbol.insert( 2 );
       arbol.insert( 1 );
       arbol.insert( 0 );
+        /*
       */
 
       System.out.println( "tree after insertions:\n" + arbol );
@@ -393,7 +475,8 @@ public class BST
       arbol.remove(0);
       System.out.println();
       System.out.println( arbol );
-
+      /*
+*/
   }
 
 }//end class
