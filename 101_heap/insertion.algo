@@ -1,0 +1,22 @@
+/*
+Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
+APCS pd6
+HW101: Heap o'Trouble
+2022-05-11
+time spent: _ hrs
+*/
+
+
+Andrews Algo:
+Always go left. If it's possible to add to the left side do it.
+else go right.
+If inserted value is smaller than root, set new value as root and set new value left child as old root.
+If new value is not greater either child of root and not smaller than root, insert the new value between the root and one of the children by setting the new
+nodes left child to the roots left child. Then set the roots left child to the new node.
+
+Jacobs algo
+Always go left. If it's possible to add to the left side do it.
+else go right.
+If inserted value is smaller than root, set new value as root and set new value left child as old root.
+If new value is not greater either child of root and not smaller than root, take existing left subtree and combine it with the right subtree (most likely at the bottom)
+and then set the root's left child to new node 

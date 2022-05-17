@@ -1,0 +1,13 @@
+/*
+Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
+APCS pd6
+HW101: Heap o'Trouble
+2022-05-11
+time spent: _ hrs
+*/
+
+If leaf, just delete.
+If target node has 1 child, set the child of the parent of the target node to be child of the target.
+If removing root, compare which child is smaller and set it as the root. Then set the other child to be a child of the root.
+This works for our algo because our insert was done in a way where every node other than the root only had at most 1 child.
+It's also why we don't worry about a node having 2 children.

@@ -1,0 +1,11 @@
+/*
+Team PinkLemonade:  Jacob Ng, Andrew Piatetsky, Emily Ortiz
+APCS pd6
+HW101: Heap o'Trouble
+2022-05-11
+time spent: _ hrs
+*/
+
+QCC
+- Won't every node except for the parent only have one child?
+- How doe we know when to set a right child for nodes other than the root?
