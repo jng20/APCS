@@ -12,6 +12,16 @@ HW102: Heap On Heapin' On
  * Implements a min heap using an ArrayList as underlying container
  */
 
+/*
+QCC
+We messed up minChildPos() because we forgot to account for "-1 if no children, or if input pos is not in ArrayList"
+This led to many index out of bounds errors in remove() and any call of minChildPos()
+
+Are we supposed to get an index out of bounds error after removing 10? We assume it's ok because we are trying to print an empty arraylist.
+
+Jacob does not code well under pressure/under time constraints. He usually misses something simple that leads to more frustration and confusion which takes longer.
+*/
+
 import java.util.ArrayList;
 
 public class ALHeap
@@ -133,18 +143,8 @@ public class ALHeap
     int _rootindex = 0;
 
     // re-sort and maintain invariant
-    while(_heap.get(_rootindex) > _heap.get(minChildPos( _rootindex ))){
-      // int left = _heap.get((_rootindex * 2) + 1);
-      // int right = _heap.get((_rootindex * 2) + 2);
-
-      // //if root is greater than left child swap root and left child
-      // if(_heap.get(_rootindex) > left){
-      //   swap(_rootindex, left);
-      //   _rootindex = (_rootindex * 2) + 1;
-      // }else if (_heap.get(_rootindex) > right){
-      //   swap(_rootindex, right);
-      //   _rootindex = ((_rootindex * 2) + 2);
-      // }
+    //compare root value with smallest child. if root value is greater than min child then swap. set rootindex to the child.
+    while( minChildPos(_rootindex) != -1 && _heap.get(_rootindex) > _heap.get(minChildPos( _rootindex )) ){
       int childswap = minChildPos( _rootindex );
       swap(_rootindex, minChildPos( _rootindex ));
       _rootindex = childswap;
@@ -170,10 +170,17 @@ public class ALHeap
       // else {
       //     return indxChildRight;
       // }
-
+      //System.out.println(_heap.toString() + " " + indxChildLeft + " " +  indxChildRight);
+      if(pos >= _heap.size()){
+        return -1;
+      }
+      else if(indxChildLeft >= _heap.size()){
+          return -1;
+      }else if (indxChildRight >= _heap.size()){
+          return -1;
+      }
       //if the min value of left and right children is the left child, return the index of left child
-      System.out.println(_heap.toString() + " " + indxChildLeft + " " +  indxChildRight);
-      if(minOf(_heap.get(indxChildLeft), _heap.get(indxChildRight)).equals(_heap.get(indxChildLeft)) ){
+      else if(minOf(_heap.get(indxChildLeft), _heap.get(indxChildRight)).equals(_heap.get(indxChildLeft)) ){
         return indxChildLeft;
       } else{
         return indxChildRight;
@@ -233,28 +240,30 @@ public class ALHeap
 
       System.out.println("removing " + pile.removeMin() + "...");
       System.out.println(pile);
-/*
-      System.out.println("removing " + pile.removeMin() + "...");
-      System.out.println(pile);
-      System.out.println("removing " + pile.removeMin() + "...");
-      System.out.println(pile);
-      System.out.println("removing " + pile.removeMin() + "...");
-      System.out.println(pile);
-      System.out.println("removing " + pile.removeMin() + "...");
-      System.out.println(pile);
-      System.out.println("removing " + pile.removeMin() + "...");
-      System.out.println(pile);
-      System.out.println("removing " + pile.removeMin() + "...");
-      System.out.println(pile);
-      System.out.println("removing " + pile.removeMin() + "...");
-      System.out.println(pile);
-      System.out.println("removing " + pile.removeMin() + "...");
-      System.out.println(pile);
-      System.out.println("removing " + pile.removeMin() + "...");
-      System.out.println(pile);
+
       System.out.println("removing " + pile.removeMin() + "...");
       System.out.println(pile);
 
+
+      System.out.println("removing " + pile.removeMin() + "...");
+      System.out.println(pile);
+      System.out.println("removing " + pile.removeMin() + "...");
+      System.out.println(pile);
+      System.out.println("removing " + pile.removeMin() + "...");
+      System.out.println(pile);
+      System.out.println("removing " + pile.removeMin() + "...");
+      System.out.println(pile);
+      System.out.println("removing " + pile.removeMin() + "...");
+      System.out.println(pile);
+      System.out.println("removing " + pile.removeMin() + "...");
+      System.out.println(pile);
+      System.out.println("removing " + pile.removeMin() + "...");
+      System.out.println(pile);
+      System.out.println("removing " + pile.removeMin() + "...");
+      System.out.println(pile);
+      System.out.println("removing " + pile.removeMin() + "...");
+      System.out.println(pile);
+/*
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
 
