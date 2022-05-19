@@ -13,6 +13,8 @@ QCC
 Why does min child of and max child of now take in an int last as a parameter? What does it do?
 This skeleton made things very confusing
 
+After a lot of thinking, realized the last int in the parameter is also needed to finish the partition.
+Without this last in param min and max child will always keep comparing until the end of the array
 */
 
 /**
@@ -45,7 +47,7 @@ public class Heapsort
 
     //STEP 2: repeatedly pull from heap until empty
     //(Sorted region will grow from R to L)
-    for( int lastLeaf = data.length - 1; lastLeaf >= 0; lastLeaf--  ) {
+    for( int lastLeaf = data.length - 1; lastLeaf > 0; lastLeaf--  ) {
       //set aside root val
       int tmp = data[0];
 
@@ -59,21 +61,25 @@ public class Heapsort
       while( pos < data.length ) {
 
         //choose child w/ max value, or check for child
-        maxChildPos = maxChildPos(pos, data);
+        maxChildPos = maxChildPos(pos,lastLeaf, data);
+      //  minChildPos = minChildPos(pos, data);
         //if no children, then i've walked far enough
         if ( maxChildPos == -1 )
           break;
         //if i am greater than my greatest child, i've walked far enough
-        else if ( data[pos] > data[maxChildPos])
+        else if ( data[pos] >= data[maxChildPos])
           break;
-        //if i am > least child, swap with that child
-        else {
+        //if i am < greatest child, swap with that child
+        else{
             swap(pos, maxChildPos, data);
             pos = maxChildPos;
         }
       }
 
       //overwrite last leaf with old root val
+      data[lastLeaf] = tmp;
+      //data[lastLeaf] = data[0];
+
 
     }
 
@@ -157,17 +163,17 @@ public class Heapsort
 
   //return position of child with least value in input array
   //( int pos, int last, int[] a )
-  private int minChildPos( int pos, int[] a )
+  private int minChildPos  ( int pos, int last, int[] a )//( int pos, int[] a )
   {
     int retVal;
       int lc = 2*pos + 1; //index of left child
       int rc = 2*pos + 2; //index of right child
 
       //pos is not in the heap or pos is a leaf position
-      if ( pos < 0 || pos >= a.length || lc >= a.length )
+      if ( pos < 0 || pos >= last || lc >= last )
         retVal = -1;
       //if no right child, then left child is only option for min
-      else if ( rc >= a.length )
+      else if ( rc >= last )
         retVal = lc;
       //have 2 children, so compare to find least
       else if ( a[lc] < a[rc])
@@ -181,17 +187,17 @@ public class Heapsort
 
   //return position of child with greatest value in input array
   //( int pos, int last, int[] a )
-  private int maxChildPos( int pos, int[] a )
+  private int maxChildPos( int pos, int last, int[] a )//( int pos, int[] a )
   {
     int retVal;
     int lc = 2*pos + 1; //index of left child
     int rc = 2*pos + 2; //index of right child
 
     //pos is not in the heap or pos is a leaf position
-    if ( pos < 0 || pos >= a.length || lc >= a.length )
+    if ( pos < 0 || pos >= last || lc >= last )
       retVal = -1;
     //if no right child, then left child is only option for min
-    else if ( rc >= a.length )
+    else if ( rc >= last )
       retVal = lc;
     //have 2 children, so compare to find least
     else if ( a[lc] > a[rc] )
@@ -265,8 +271,10 @@ public class Heapsort
   {
 
     int[] a = buildArray( 10, 10 );
+    int[] b = {1,2,3,4,5,6,7,8,9,10};
 
     printArr(a);
+  //  printArr(b);
 
     Heapsort h = new Heapsort();
 
